@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>iot_concept</title>
+
+
+<style type="text/css">
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+kbd {
+  display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js Dark theme for JavaScript, CSS and HTML
+ * Based on the slides of the talk “/Reg(exp){2}lained/”
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: white;
+	background: none;
+	text-shadow: 0 -.1em .2em black;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+pre[class*="language-"],
+:not(pre) > code[class*="language-"] {
+	background: hsl(30, 20%, 25%);
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border: .3em solid hsl(30, 20%, 40%);
+	border-radius: .5em;
+	box-shadow: 1px 1px .5em black inset;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .15em .2em .05em;
+	border-radius: .3em;
+	border: .13em solid hsl(30, 20%, 40%);
+	box-shadow: 1px 1px .3em -.1em black inset;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: hsl(30, 20%, 50%);
+}
+
+.token.punctuation {
+	opacity: .7;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+	color: hsl(350, 40%, 70%);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: hsl(75, 70%, 60%);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: hsl(40, 90%, 60%);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: hsl(350, 40%, 70%);
+}
+
+.token.regex,
+.token.important {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+.token.deleted {
+	color: red;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">사물인터넷 개요</h1>
+
+<ul>
+<li>사물인터넷이란 무엇인가?</li>
+<li>사물인터넷의 기반 기술은 무엇인가?</li>
+<li>사물인터넷의 이슈는 무엇인가?</li>
+<li>사물인터넷의 주요 사례는 어떠한 것들이 있는가?</li>
+</ul>
+
+<hr>
+
+<h2 id="toc_1">1. 사물인터넷 개념</h2>
+
+<p><a href="https://youtu.be/iGRBWvrBuro?start=15&amp;end=400"><img src="https://img.youtube.com/vi/iGRBWvrBuro/0.jpg" alt="aa"></a></p>
+
+<ul>
+<li>사물인터넷은 다양한 사물들을 센서와 통신기술을 더해 사물과 사물, 사물과 사람을 연결함으로써 정보를 주고 받으며 새로운 가치를 만드는 것입니다.</li>
+</ul>
+
+<!--
+- 사물인터넷 사례
+    - 버스 안내시스템
+    - 다양한 사물인터넷 제품들: 조명 제어, 
+    - 작업자 안전관리 시스템
+    - HIS: 조명 제어, 침입자 감지, 누수감지
+    - IoT 기반 출입문 통제 시스템
+    - 검체 위치추적및 상태 모니터링 
+- IoT 혁신센터 - 스타트업을 위한 전문 프로그램
+    - 스마트 팜 시스템
+        - 충북 4개의 축산농가에 보급
+        - 젓소의 행동을 감지에 인공수정의 적기 예측
+    - 드론 배송 시스템
+    - 정보주도 사물인터넷 적용 도시: 바르셀로나
+        - 스마트 주차장
+        - 사물인터넷 적용 쓰레기통
+        - 가스, 전기 사용량 자동 정산 시스템
+        - 스마트 가로등 시스템
+- 사물인터넷의 주요 분야별 비율
+    ![](images/iot_category_ratio.png)
+    
+- 사물인터넷에서의 해결해야할 과제
+    - 개인정보 유출/보호 
+-->
+
+<h3 id="toc_2">사물인터넷에서 사물이란?</h3>
+
+<ul>
+<li>네트워크에 연결된 사용자 단말이나 다양한 형태의 장치</li>
+<li><p>임의의 프로세서를 장착한 일종의 내장형 시스템</p>
+
+<ul>
+<li>스마트폰이나 태블릿과 같은 모바일 기기</li>
+<li>안경이나 시계 같은 착용형 기기</li>
+<li>자동차, 로봇, 드론 </li>
+<li>TV, 냉장고와 같은 가전제품</li>
+<li>폐쇄 회로 텔레비전(Closed Circuit Television, CCTV) 등</li>
+</ul></li>
+<li><p><strong>사물에 부착된 장치</strong></p>
+
+<ul>
+<li>주변 상황을 인지하고 필요한 데이터를 수집할 수 있는 <strong>센서</strong></li>
+<li>수집한 데이터를 처리하거나 저장할 수 있는 <strong>처리기</strong> 및 <strong>저장 공간</strong></li>
+<li>인터넷 망과 연결하여 데이터를 주고받을 수 있는 <strong>통신 모듈</strong></li>
+<li>자체 <strong>전원</strong>으로 구성</li>
+</ul></li>
+<li><p>사물들은 자율적으로 동작하면서 필요한 정보를 공유</p></li>
+</ul>
+
+<h3 id="toc_3">사물인터넷의 개념적 변화과정</h3>
+
+<ul>
+<li><p>사물 통신의 개념이 사물인터넷에 흡수되어 차세대 지능통신으로 발전</p>
+
+<p><img src="images/iot_concept_change.png" alt=""></p></li>
+</ul>
+
+<h3 id="toc_4">사물인터넷의 발전단계</h3>
+
+<p><img src="images/iot_evolution.png" alt="">
+  출처: IBM GTO 2014 - IoT 3.0, <a href="http://klabcamss.blogspot.kr/2014/08/iot-30.html">http://klabcamss.blogspot.kr/2014/08/iot-30.html</a></p>
+
+<ul>
+<li><p><strong>IoT 1.0 : 디바이스 연결 단계</strong></p>
+
+<ul>
+<li><strong>초기 단계</strong> : 사물을 인터넷에 연결하는 기술 중심</li>
+<li>네트워크에 연결된 사물의 기능이나 정보가 제한적이고, 대시보드를 통해 실시간으로 데이터를 조회하는 수준의 단계</li>
+<li><a href="https://youtu.be/iGRBWvrBuro?start=924">사례1: 검체 모니터링 시스템</a></li>
+<li><a href="https://youtu.be/iGRBWvrBuro?start=1171">사례2: 스마트 팜 시스템</a></li>
+</ul></li>
+<li><p><strong>IoT 2.0 : 인프라 구축 단계</strong></p>
+
+<ul>
+<li><strong>중간 단계</strong> : 사물이 주변 환경을 센싱하는 능력으로 다른 사물과 연결이 가능해지는 시기</li>
+<li>센서와 통신모듈 가격 하락, 통신기술 발전 등으로 인터넷에 연결된 기기 수가 급격히 증가, 대량의 데이터 수집, 분석을 위한 빅 데이터 플랫폼, 예측분석, 사물 인터넷 미들웨어 등 다양한 인프라 기술이 개발되는 단계</li>
+<li>센서가 직접 센싱한 데이터나 이벤트를 구동기에 보내고 구동기는 전달된 신호에 따라 기계를 작동시키거나 간단한 동작이 가능
+
+<ul>
+<li>집안의 자동온도조절장치, 사용자가 집근처에 왔을 때 냉·난방기 자동 가동과 같은 원격으로 제어 가능</li>
+</ul></li>
+<li>대용량 데이터가 빠르게 생성됨에 따라, 사물 데이터의 실시간 수집 및 분석에 대한 요구가 증가</li>
+<li><a href="https://youtu.be/iGRBWvrBuro?start=527">사례3: 스마트 홈 시스템</a></li>
+</ul></li>
+<li><p><strong>IoT 3.0 : 산업별 혁신 솔루션 개발 단계</strong></p>
+
+<ul>
+<li><strong>마지막 단계</strong> : 사물의 자동 수행 능력과 상호 연결성을 이용하여 산업혁신을 위한 솔루션을 만들어가는 시기</li>
+<li>자동차, 교통, 스마트홈, 에너지, 유틸리티, 보안, 금융, 헬스케어, 제조업 등 광범위한 분야에서 서비스가 구현되는 단계</li>
+<li>현실 세계의 물리적 원인과 그에 따른 물리적 결과의 복잡한 현상을 사물을 통해 관측되는 데이터를 기반으로 추상화하고 사업 문제 해결을 위해 프로그램화한 사업 솔류션 개발</li>
+<li>사물은 더욱 지능화되어 주변 환경을 센싱, 다른 사물이나 센서, 서비스 등과 상호작용하면서 스스로 정보를 수집하고 공유</li>
+<li>기업은 자체 인프라 구축보다는 저비용, 구축 신속성, 고가용성, 고확장성 등의 이유로 클라우드 기반 서비스를 점차 선호</li>
+<li><p>사례4: 스마트 시티</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/A5fVAxFjIbs?rel=0&amp;start=783&end=1228" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></li>
+</ul></li>
+</ul>
+
+<h2 id="toc_5">2. 사물인터넷 기반 기술</h2>
+
+<h3 id="toc_6">센싱 기술</h3>
+
+<ul>
+<li>사물과 주위 환경에서 정보를 얻기 위한 기술</li>
+<li>센서
+
+<ul>
+<li>대상으로부터 물리, 화학, 생물학적 요소를 측정하여 사용자나 시스템에서 사용할 수 있게 해주는 기능을 제공</li>
+<li>온도, 습도, 열, 가스, 조도, 위치, 모션 센서 등 다양한 기능의 센서가 활용</li>
+<li>센서 내에 프로세서를 내장하여 스스로 판단하고, 정보를 처리할 수 있는 <a href="http://www.elec4.co.kr/article/articleView.asp?idx=7276">스마트센서(Smart Sensor)</a> 등장</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_7">통신 및 네트워킹 기술</h3>
+
+<ul>
+<li>인간-사물-서비스를 연결하는 데 필요</li>
+<li><a href="https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%84%B0%EB%84%B7_%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C">IP(인터넷프로토콜)</a>를 사용하는 기기 간 통신 기술
+
+<ul>
+<li>와이파이(Wireless-Fidelity, Wi-Fi)</li>
+<li>3세대 이동통신(3rd Generation Mobile Communication, 3G)/4세대 이동통신(4th Generation Mobile Communication, 4G)/LTE(Long Term Evolution)</li>
+<li>5세대 이동통신(5th Generation Mobile Communication, 5G, IMT-2020)</li>
+</ul></li>
+<li>IP를 사용하지 않는 기기 간 통신
+
+<ul>
+<li>USB(Universal Serial Bus) </li>
+<li><a href="https://ko.wikipedia.org/wiki/%EB%B8%94%EB%A3%A8%ED%88%AC%EC%8A%A4">블루투스(Bluetooth)</a></li>
+<li><a href="https://ko.wikipedia.org/wiki/%EC%A7%81%EB%B9%84">지그비(ZigBee)</a></li>
+<li><a href="https://ko.wikipedia.org/wiki/RFID">전파 식별(Radio Frequency IDentification, RFID)</a>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=_WLbp91r8Ro">RFID 활용 사례</a> </li>
+</ul></li>
+<li><a href="https://ko.wikipedia.org/wiki/%EA%B7%BC%EA%B1%B0%EB%A6%AC_%EB%AC%B4%EC%84%A0_%ED%86%B5%EC%8B%A0">근거리 무선 통신(Near Field Communication, NFC)</a> 등</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_8">서비스 인터페이스 기술</h3>
+
+<ul>
+<li>사물인터넷 주요 구성요소(사람·사물·서비스)를 통해 <strong>특정 기능을 수행하는 응용 서비스와 연동하는 역할</strong>
+
+<ul>
+<li>즉, 단순한 네트워크 인터페이스 개념이라기 보다는 사물인터넷 망을 통해 정보를 센싱, 처리 및 변환, 저장, 검색, 판단 등 다양한 서비스를 제공하는 인터페이스 역할을 수행</li>
+</ul></li>
+<li>개방형 웹 아키텍쳐인 REST가 가장 대표적으로 사용됨 </li>
+</ul>
+
+<h3 id="toc_9">사물인터넷과 클라우드, 빅데이터, 인공지능 기술</h3>
+
+<ul>
+<li> <strong>빅데이터</strong>
+
+<ul>
+<li>센서로부터 수집된 방대한 양의 데이터에 대한 분석 및 가공의 필요성이 증가</li>
+</ul></li>
+<li><strong>인공 지능의 딥 러닝(Deep Learning)</strong>
+
+<ul>
+<li>수많은 데이터를 학습하고 해당 데이터가 의미하는 바를 스스로 해독하여 목적에 맞는 최적의 답안을 찾아내는 기술의 필요성 증가</li>
+<li>고객 개인의 취향과 수요(needs)를 예측하여 가장 적합한 맞춤 서비스 제공, 고객이 원하는 정보 검색, 고객 상황에 맞는 기기 제어(조명, 온도 등), 고객에게 필요한 상품 주문 등이 가능</li>
+<li>공유경제와 결합하여 다수의 소비자가 차량, 숙박시설 등 공유</li>
+</ul></li>
+<li><strong>클라우드 컴퓨팅(Cloud Computing)</strong>
+
+<ul>
+<li>방대한 센싱 데이터를 다양한 분석 방법으로 패턴, 연관관계 등을 추출함으로써 의미 있는 정보로 가공해내어 다양한 서비스에서 활용하기 위해
+대용량의 저장장치와 분석을 위한 고성능의 컴퓨팅 처리능력이 필요</li>
+</ul></li>
+</ul>
+
+<hr>
+
+<h2 id="toc_10">3. 사물인터넷의 특징 및 이슈</h2>
+
+<h3 id="toc_11">사물인터넷의 특징</h3>
+
+<ul>
+<li><p>기술적인 특징</p>
+
+<ul>
+<li>사물 인터넷 환경에서는 <strong>다양한 종류의 디바이스가 서로 다른 플랫폼에서 서로 다른 프로토콜을 이용하여 통신</strong>을 하면서 동작
+
+<ul>
+<li>상호운용성 문제</li>
+<li>이종성으로 인한 효율적인 보안 서비스 제공이 어려움</li>
+<li>표준화를 통한 상호운용성 문제 해결</li>
+</ul></li>
+<li>자원제약성을 가진 사물 인터넷 기기들은 최소 자원(Minimum Resource) 요구사항을 만족해야 함</li>
+<li>사물 인터넷은 높은 이동성(Mobility)으로 인해 네트워크 토폴로지(Topology)가 동적
+
+<ul>
+<li>수많은 기기들이 수시로 재연결 요청과 함게 인증을 요청하므로, 사물인터넷 환경은 크게 구성될수록 유연하고 확장성을 가져야 함 </li>
+</ul></li>
+</ul></li>
+<li><p>시장의 특징</p>
+
+<ul>
+<li>사물 인터넷은 완전히 새로운 카테고리의 상품이라기보다는 기존상품의 가치를 높이는 경우가 많음
+
+<ul>
+<li>예, <a href="https://www.youtube.com/watch?v=P2mdhVPBByI">스마트 냉장고</a><br></li>
+</ul></li>
+<li>하드웨어, 소프트웨어, 네트워크, 보안 등 여러 기술적 요소를 결합한 시스템 상품(System Goods)
+
+<ul>
+<li>다양한 요소를 결합하는 통합 역량이 중요하고 복잡성 관리가 사업의 관건</li>
+</ul></li>
+<li>플랫폼 주도권 경쟁 치열
+
+<ul>
+<li>PC 시대 플랫폼: 인털+윈도우</li>
+<li>모바일 시대 플랫폼: 안드로이드, IOS</li>
+<li>사물인터넷 시대 플랫폼: ?? </li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3 id="toc_12">사물인터넷의 이슈</h3>
+
+<ul>
+<li>보안 및 사생활의 침해 위협
+
+<ul>
+<li>개인정보 유출로 인한 사생활 침해</li>
+<li>제조공장, 전력을 포함한 사회 인프라, 자동차, 의료, 가전제품 등 모든 사물이나 서비스가 악의적 공격의 대상</li>
+<li>상호 연결되는 사물이나 기기들 간의 보안은 센서를 포함한 하드웨어, 서비스, 응용 프로그램 모든 수준에서 고려</li>
+<li>도입 초기부터 보안을 위한 기술적 문제 해결책과 법·제도적 측면의 대비책 등 종합적인 방안 마련이 전제</li>
+</ul></li>
+<li><p>상호운용성을 위한 글로벌 표준 확보</p>
+
+<table>
+<thead>
+<tr>
+<th>표준단체</th>
+<th>개요</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>키비콘(Qivicon)</td>
+<td>2011년, 독일 통신사 도이치텔레콤(Deutsche Telekom; DT)의 주도로 설립. 엔베베(EnBW), 미에레(Miele), 삼성전자, 필립스(Phillips) 등 통신, 에너지, 가전 분야의 약 30개 기업이 가입</td>
+</tr>
+<tr>
+<td>oneM2M</td>
+<td>2012년, 글로벌 사물 인터넷 서비스 플랫폼 표준 개발을 위해 유럽통신표준협회 (ETSI), 미국 통신 산업 협회(TIA), 미국 통신정보표준협회(ATIS) 등 7개의 세계 주요 표준화 단체가 공동으로 oneM2M을 설립</td>
+</tr>
+<tr>
+<td>올씬얼라이언스(AllSeen Alliance)</td>
+<td>2013년, 퀄컴(Qualcomm)과 리눅스 파운데이션(Linux Foundation), 시스코, 마이크로소프트, LG전자 등이 참가하여 결성한 표준화 단체</td>
+</tr>
+<tr>
+<td>산업 인터넷 컨소시엄(IIC)</td>
+<td>2014년, 인텔과 시스코, AT&amp;T, GE, IBM은 산업용 사물 인터넷에 목적을 둔 표준을 개발하기 위해 결성, 이후 마이크로소프트가 합류</td>
+</tr>
+<tr>
+<td>IEEE P2413</td>
+<td>2014년, IEEE는 사물 인터넷 아키텍쳐 구축을 통해 다양한 산업과 기술 영역으로 확장을 목적으로 IEEE P2413 프로젝트를 공식 개시</td>
+</tr>
+<tr>
+<td>쓰레드그룹(Thread Group)</td>
+<td>2014년, 구글(Nest Labs) 주도로 설립된 사물 인터넷 프로토콜 컨소시엄으로 삼성전자, 암(ARM), 프리스케일(Freescale), 실리콘 랩(Silicon Labs) 등이 참여</td>
+</tr>
+<tr>
+<td>오픈 인터커넥트 컨소시엄(OIC)</td>
+<td>2014년, 인텔, 아트멜(Atmel), 델(Dell), 삼성전자 등은 퀄컴 주도의 올씬얼라이언스에 대항하고, 사물 인터넷 기기의 연결성 확보를 목표로 설립</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+
+<h2 id="toc_13">참고자료</h2>
+
+<ul>
+<li>양순옥, 김성석, <q>4차 산업혁명을 견인하는 다이버전스 기술, 사물인터넷 (IoT)</q>, 생능출판사, 2018.</li>
+<li>민경식, <q>사물인터넷 (Internet of Things)</q>, <a href="http://www.kisa.or.kr/uploadfile/201306/201306101740531675.pdf">http://www.kisa.or.kr/uploadfile/201306/201306101740531675.pdf</a></li>
+</ul>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>bluetooth</title>
+
+
+<style type="text/css">
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+kbd {
+  display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">블루투스 통신</h1>
+
+<h2 id="toc_1">학습목표</h2>
+
+<ul>
+<li>블루투스 모듈의 사용법을 학습한다.</li>
+<li>블루투스 모듈을 사용하여 스마트폰으로 아두이노의 LED를 제어하는 방법을 학습한다.</li>
+<li>블루투스 모듈을 사용하여 아두이노 보드의 가변저항 값을 스마트폰에 출력하는 방법을 학습한다.</li>
+</ul>
+
+<h2 id="toc_2">1. 블루투스 통신이란?</h2>
+
+<ul>
+<li><strong>블루투스</strong>는 1994년에 에릭슨이 최초로 개발한 디지털 통신 기기를 위한 개인 근거리 무선 통신 산업 표준</li>
+<li>산업, 과학, 의료용으로 할당된 ISM(Industiral Scientific and Medical) 대역에 포함되는 <strong>2.4~2.485GHz</strong>의 단파 UHF 전파를 이용하여 전자 장비 간의 짧은 거리(10m 전후)의 데이터 통신</li>
+<li>ISM 주파수 대역은 전파사용의 허가가 필요 없는 대역이므로, 무선 랜 서비스, RFID, XBee, 블루투스 등 다양한 통신에 사용되므로, 주파수 간섭이 발생할 수 있음.
+
+<ul>
+<li>해당 주파수 대역에서 비어있는 채널을 찾아 데이터를 전송하기 때문에 간섭이 일어난다 하더라도 즉시 다른 빈 곳으로 전송하게 된다. 음성기기의 사용 시 아주 잠깐의 지연현상이 발생하지만 체감하기 어렵다.</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_3">1.1 블루투스 모듈 HC-05</h3>
+
+<ul>
+<li>전송속도(9600bps), data bits(8), stop bit(1), Parity(No parity) 기본설정</li>
+<li>Default <strong>PINCODE</strong> : &quot;<strong>1234</strong>“</li>
+<li><p>10m 거리이내사용가능</p>
+
+<p><img src="images/hc05.png" alt=""></p></li>
+</ul>
+
+<h3 id="toc_4">1.2 아두이노 보드 연결 구성: 블루투스 모듈 HC-05</h3>
+
+<ul>
+<li>블루투스 모듈  <strong>HC-05</strong>를 베이스보드 우측상단의 <strong>Sensor</strong> 섹션에 삽입 (아래 그림 참조)</li>
+<li><strong>HC-05</strong> 모듈의 <strong>TX, RX</strong> (<strong>Sensor</strong> 섹션의 <strong>S4, S5</strong>)와 <strong>Uno</strong> 보드의 <strong>TX, RX</strong> (디지털입출력 핀 1,0)를 서로 교차하게 연결
+
+<ul>
+<li> <strong>HC-05</strong> 모듈의 <strong>TX</strong> --&gt; <strong>Uno</strong> 보드의 <strong>RX</strong></li>
+<li> <strong>HC-05</strong> 모듈의 <strong>RX</strong> --&gt; <strong>Uno</strong> 보드의 <strong>TX</strong></li>
+</ul></li>
+<li><strong>HC-05</strong> 모듈의 <strong>VCC</strong>는 (브레드보드를 통해) <strong>Uno</strong> 보드의 <strong>5V</strong>에 연결</li>
+<li><p><strong>HC-05</strong> 모듈의 <strong>GND</strong>는 (브레드보드를 통해) <strong>Uno</strong> 보드의 <strong>GND</strong>에 연결</p>
+
+<p><img src="images/hc05_connect.png" alt=""></p></li>
+</ul>
+
+<h2 id="toc_5">2. 블루투스 모듈을 이용한 아두이노 보드와 스마트 폰간의 통신</h2>
+
+<ul>
+<li>스마트 폰과 블루투스 모듈간에 블루투스 방식으로 통신</li>
+<li><p>아두이노 보드는 블루투스 모듈과 시리얼 통신</p>
+
+<p><img src="images/bluetooth_overview.png" alt=""></p></li>
+</ul>
+
+<h3 id="toc_6">1.4 안드로이드 스마트폰과 블루투스 모듈 연결</h3>
+
+<ul>
+<li><p>안드로이드 스마트폰의 설정에서 연결가능한 블루투스 기기를 검색하여 아두이노 보드에 장착된 블루투스 모듈을 찾아 연결하고 활성화</p>
+
+<ol>
+<li>스마트폰의 설정에서 블루투스 기능 ON</li>
+<li><strong>사용 가능한 디바이스</strong> 검색</li>
+<li>검색된 아두이노 블루투스 모듈 선택</li>
+<li>PIN코드를 <q><strong>1234</strong></q>로 입력하여 등록(페어링)</li>
+</ol>
+
+<p><img src="images/bluetooth_reg.jpg" alt=""></p></li>
+</ul>
+
+<h2 id="toc_7">2. 스마트 폰에서 아두이노 보드 LED 제어하기</h2>
+
+<ul>
+<li><p>스마트 폰에는 PC가 시리얼 모니터를 통해서 그림과 같이 LED를 제어 할 수 있는 스위치 값을 전달했던 것처럼 스마트 폰에서도 시리얼 통신으로 전달할 스위치 값을 발생시켜 줄 엡(App)을 설치하여 사용</p>
+
+<p><img src="images/smartphone_led_control_overview.png" alt=""></p></li>
+</ul>
+
+<h3 id="toc_8">2.1 예제 1 (스마트폰을 이용한 LED ON/OFF 제어)</h3>
+
+<ul>
+<li>스마트 폰에 ON/OFF제어를 할 수 있는 <q><a href="app/BT_ONOFFSW.apk"><strong>BT_ONOFFSW.apk</strong></a></q>를 설치하고, 블루투스 모듈이 장착된 아두이노 보드에 연결된 LED를 ON/OFF</li>
+</ul>
+
+<h4 id="toc_9">2.1.1 아두이노 보드 연결 구성</h4>
+
+<p><img src="images/example1_pin_connection.png" alt=""></p>
+
+<p><img src="images/example1.png" alt=""></p>
+
+<h4 id="toc_10">2.1.2 Sketch 프로그램</h4>
+
+<div><pre><code class="language-c">int ledPin = 8;       // 아두이노 보드의 디지털입출력 핀 8번에 LED연결
+
+void setup( ) {
+   Serial.begin(9600);      // BT 모듈의 통신 속도 9600bps 설정
+   pinMode(ledPin, OUTPUT); // 디지털입출력 핀 8번을 출력으로 설정
+}
+
+void loop() {
+  char r_data;
+  if (Serial.available( )&gt; 0) { // BT 모듈을 통한 시리얼 통신 입력 발생 검사
+    r_data = Serial.read( );    // 시리얼 통신 문자 입력 값 저장, (시리얼 통신으로 수신되는 데이터의 타입이 문자형 임을 가정)
+
+    if( r_data == &#39;1&#39;) {        // 스마트 폰의 앱 “BT_ONOFFSW.apk”의 &quot;Switch ON&quot;이 터치될 때, 문자 &#39;1&#39;이 전송됨
+         digitalWrite(ledPin, HIGH);  // LED 켜기
+    }
+    if( r_data == &#39;2&#39;) {        // 스마트 폰의 앱 “BT_ONOFFSW.apk”의 &quot;Switch OFF&quot;이 터치될 때, 문자 &#39;2&#39;가 전송됨
+         digitalWrite(ledPin, LOW);   // LED 끄기
+    }
+  }
+}</code></pre></div>
+
+<h4 id="toc_11">2.1.3  스마트 폰에 App 설치</h4>
+
+<ol>
+<li>휴대폰에서 다음 <a href="app/BT_ONOFFSW.apk">링크</a>를 클릭하여 앱 (<strong>BT_ONOFFSW.apk</strong>) 다운로드</li>
+<li>다운로드된 후, 파일 <strong>열기</strong>를 클릭하여 설치
+
+<ul>
+<li><q><em>보안상의 이유로 이 소스에서 가져온 알 수 없는 앱을 휴대전화에 설치할 수 없습니다.</em></q> 메시지가 나오면, <strong>설정</strong>을 클릭한후 <q><strong>이 출처 허용</strong></q>을 활성화</li>
+<li>앞 페이지로 이동한 후에, <strong>설치</strong>를 클릭하여 설치</li>
+</ul></li>
+</ol>
+
+<h4 id="toc_12">3.1.4 실행</h4>
+
+<ol>
+<li>스마트폰에서 앱 실행</li>
+<li><strong>블루투스 찾기</strong> 버튼 클릭하여 연결할 블루투스 모듈 선택
+
+<ul>
+<li>연결이 되면, 화면 상단에 <strong>연결 ON</strong>이 표시됨</li>
+</ul></li>
+<li><strong>Switch ON</strong> 혹은 <strong>Switch OFF</strong> 버튼을 눌러 8번 핀에 연결된 LED의 ON/OFF 확인</li>
+</ol>
+
+<p><a name="ex2"></a></p>
+
+<h3 id="toc_13">2.2 예제 2 (스마트폰을 이용한 4개의 LED ON/OFF 제어)</h3>
+
+<ul>
+<li>아두이노 보드에 4개의 LED 연결</li>
+<li>스마트 폰과 블루투스 모듈을 통하여 4개의 LED  ON/OFF</li>
+<li><p>6개의 기능 버튼이 있는 스마트 폰 App (<a href="app/BT_SW6.apk">BT_SW6.apk</a>) 설치</p>
+
+<p><img src="images/example2.png" alt=""></p></li>
+</ul>
+
+<h4 id="toc_14">2.2.1 아두이노 보드 연결 구성</h4>
+
+<ul>
+<li><p>이전 보드 연결 구성에서 다음 연결 추가</p>
+
+<ul>
+<li>디지털 입출력 핀 9, 10, 11 번과 LED 1,2,3 연결 추가</li>
+</ul>
+
+<p><img src="images/example2_connection.png" alt=""></p></li>
+</ul>
+
+<h4 id="toc_15">2.2.2 Sketch 프로그램</h4>
+
+<div><pre><code class="language-c">int ledPin[4] = {8,9,10,11};
+int k, num;
+char phoneData;
+
+void setup( ) {
+   Serial.begin(9600);
+   for (k=0; k&lt;4; k++) {
+      pinMode(ledPin[k], OUTPUT);
+   }
+}
+
+/*
+  SerialEvent occurs whenever a new data comes in the hardware serial RX. This
+  routine is run between each time loop() runs, so using delay inside loop can
+  delay response. Multiple bytes of data may be available.
+*/
+void serialEvent() {
+  phoneData = Serial.read( );
+}
+
+void loop() {
+    if (phoneData == &#39;1&#39;) {
+         digitalWrite(ledPin[0], HIGH);
+    } else if (phoneData == &#39;2&#39;) {
+         digitalWrite(ledPin[1], HIGH);
+    } else if (phoneData == &#39;3&#39;) {
+         digitalWrite(ledPin[2], HIGH);
+    } else if (phoneData == &#39;4&#39;) {
+         digitalWrite(ledPin[3], HIGH);
+    } else if (phoneData == &#39;6&#39;) {
+      for (k=0; k&lt;4; k++) {
+        digitalWrite(ledPin[k], LOW);
+      }
+    }
+}</code></pre></div>
+
+<ul>
+<li><a href="https://www.arduino.cc/en/Reference/SerialEvent"><strong>serialEvent</strong></a>() 함수
+
+<ul>
+<li>이 함수는 loop()함수가 실행될 때마다, 시리얼 데이터가 있으면 호출됨</li>
+<li>이 함수는 <a href="https://store.arduino.cc/arduino-esplora">Esplora</a>, <a href="https://store.arduino.cc/arduino-leonardo-without-headers">Leonardo</a>, <a href="https://store.arduino.cc/arduino-micro-without-headers">Micro</a> 아두이노 보드에서는 호환되지 않음</li>
+</ul></li>
+</ul>
+
+<h4 id="toc_16">2.2.3 스마트 폰에 App 설치</h4>
+
+<ol>
+<li>휴대폰에서 다음 <a href="app/BT_SW6.apk">링크</a>를 클릭하여 앱 BT_SW6.apk 다운로드</li>
+<li>다운로드된 후, 파일 열기를 클릭하여 설치
+
+<ul>
+<li><q>보안상의 이유로 이 소스에서 가져온 알 수 없는 앱을 휴대전화에 설치할 수 없습니다.</q> 메시지가 나오면, 설정을 클릭한후 <q>이 출처 허용</q>을 활성화</li>
+<li>앞 페이지로 이동한 후에, 설치를 클릭하여 설치</li>
+</ul></li>
+</ol>
+
+<h4 id="toc_17">2.2.4 실행</h4>
+
+<ol>
+<li>스마트폰에서 앱 실행</li>
+<li>블루투스 찾기 버튼 클릭하여 연결할 블루투스 모듈 선택
+
+<ul>
+<li>연결이 되면, 화면 상단에 연결 ON이 표시됨</li>
+</ul></li>
+<li>SW1, SW2, SW3, SW4, SW_OFF 버튼을 눌러 8,9,10,11번 핀에 연결된 LED의 ON/OFF 확인</li>
+</ol>
+
+<h2 id="toc_18">3. 블루투스 통신으로 스마트폰에 데이터 전송</h2>
+
+<p><img src="images/send_data_to_smartphone.png" alt=""></p>
+
+<p><a name="ex3"></a></p>
+
+<h3 id="toc_19">3.1 예제 3 (아두이노 보드의 가변저항 값을 스마트폰에 표시하기)</h3>
+
+<ul>
+<li><q><a href="app/BT_RCV1.apk">BT_RCV1.apk</a></q> 설치</li>
+<li>블루투스 쉴드가 장착된 아두이노 보드에 가변저항 연결</li>
+<li>가변저항 값을 스마트 폰 표시</li>
+<li><p>저항 값에 따라 LED 밝기 조절</p>
+
+<p><img src="images/example3.png" alt=""></p></li>
+</ul>
+
+<h4 id="toc_20">3.1.1 스마트폰 앱 기능과 아두이노 동작</h4>
+
+<p><img src="images/function_behavior.png" alt=""></p>
+
+<h4 id="toc_21">3.1.2 아두이노 보드 연결 구성</h4>
+
+<p><img src="images/example3_pin_connection.png" alt=""></p>
+
+<p><img src="images/example3_connection.png" alt=""></p>
+
+<h4 id="toc_22">3.1.3 Sketch 프로그램</h4>
+
+<div><pre><code class="language-c">int ledPin = 5;       // 아두이노 보드의 PWM핀 5번에 LED연결
+int vrVal;            // 가변저항 값 저장을 위한 변수
+int vrPercentage;     // 가변저항 값을 100분율로 표시한 값을 저장하는 변수
+int pwmVal;           // 가변저항 값을 0~255사이의 값으로 변환한 값을 저장하는 변수
+char select;          //
+
+void setup( ) {
+   Serial.begin(9600);
+}
+
+void serialEvent() {
+  select = Serial.read(); // 시리얼 통신 입력값이 있으면 읽어서 select 변수에 저장 (문자 &#39;1&#39; 혹은 &#39;2&#39; 중에 하나가 수신됨)
+}
+
+void loop() {
+  if (select == &#39;1&#39;) {      // 스마트 폰 엡에서 ‘수신 시작’ 명령 수신 (문자 &#39;1&#39;을 보냄)
+    vrVal = analogRead(2);  // 아두이노 보드에 연결된 VR로 부터 값 입력
+    vrPercentage = map(vrVal, 0, 1023, 0, 100); // %값으로 변환
+    Serial.write(vrPercentage);   // 블루투스를 이용한 시리얼 통신으로 스마트 폰에 값 전달
+
+    pwmVal = map(vrVal, 0, 1023, 0,255);  // PWM 값으로 변환
+    analogWrite(ledPin,pwmVal);           //VR값에 비례한 LED 밝기 표시
+    delay(1000);
+  }
+  if (select ==&#39;2&#39;) {       // 스마트 폰 엡에서 ‘수신 종료’ 명령 수신 (문자 &#39;2&#39;을 보냄)
+    analogWrite(ledPin,0);  // LED OFF
+    delay(20);
+  }
+}</code></pre></div>
+
+<h2 id="toc_23">4. 소프트웨어 시리얼을 이용한 블루투스 통신</h2>
+
+<ul>
+<li>블루투스 쉴드는 아두이노 보드의 UART 포트인 <strong>0번(RX)</strong>와 <strong>1번(TX)</strong>를 <strong>TXD</strong>와 <strong>RXD</strong>로 연결 사용
+
+<ul>
+<li>PC의 시리얼과 블루투스 쉴드가 같은 통신 포트 사용하게 되어 충돌</li>
+</ul></li>
+<li><p>소프트웨어적으로 시리얼 기능 사용</p>
+
+<ul>
+<li>아두이노 보드의 0번과 1번 대신에 <strong>다른 디지털입출력 핀을 소프트웨어적으로 정의하여 시리얼 통신</strong></li>
+<li>소프트웨어 시리얼 통신용으로 사용하는 핀이 다른 용도로 중복되지 않도록 주의
+
+<ul>
+<li>예를 들면 디지털입출력 핀 2번과 3번을 소프트웨어적으로 TX와 RX로 정의하여 사용</li>
+</ul></li>
+<li><p><strong>사용방법</strong></p>
+
+<ul>
+<li>&lt;SoftwareSerial.h&gt;를  스케치에 포함</li>
+<li><p>소프트웨어 시리얼 함수 정의</p>
+
+<p><img src="images/software_serial.png" alt=""></p></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3 id="toc_24">4.1 예제 4 (소프트웨어 시리얼 기능을 갖는 블루투스 쉴드를 이용한 LED의 ON/OFF 제어)</h3>
+
+<h4 id="toc_25">4.1.1 아두이노 보드 연결 구성</h4>
+
+<p><img src="images/example4_pin.png" alt=""></p>
+
+<p><img src="images/example4_pin2.png" alt=""></p>
+
+<h4 id="toc_26">4.1.2 Sketch 프로그램</h4>
+
+<div><pre><code class="language-c">#include &lt;SoftwareSerial.h&gt;
+int rxPin=2;
+int txPin=3;
+SoftwareSerial BTSerial(rxPin,txPin); // 소프트웨어 시리얼 설정
+
+int ledPin = 8;       // 아두이노 보드의 디지털입출력 핀 8번에 LED연결
+
+void setup( ) { 
+   BTSerial.begin(9600);      // BT 모듈의 통신 속도 9600bps 설정
+   pinMode(ledPin, OUTPUT); // 디지털입출력 핀 8번을 출력으로 설정
+}
+
+void loop() {
+  char r_data;
+  if (BTSerial.available( )&gt; 0) { // BT 모듈을 통한 시리얼 통신 입력 발생 검사
+    r_data = BTSerial.read( );    // 시리얼 통신 문자 입력 값 저장, (시리얼 통신으로 수신되는 데이터의 타입이 문자형 임을 가정)
+
+    if( r_data == &#39;1&#39;) {        // 스마트 폰의 앱 “BT_ONOFFSW.apk”의 &quot;Switch ON&quot;이 터치될 때, 문자 &#39;1&#39;이 전송됨
+         digitalWrite(ledPin, HIGH);  // LED 켜기
+    }
+    if( r_data == &#39;2&#39;) {        // 스마트 폰의 앱 “BT_ONOFFSW.apk”의 &quot;Switch OFF&quot;이 터치될 때, 문자 &#39;2&#39;가 전송됨
+         digitalWrite(ledPin, LOW);   // LED 끄기
+    }
+  }
+}</code></pre></div>
+
+<p><a name="exercise"></a></p>
+
+<h2 id="toc_27">5. 연습문제</h2>
+
+<ol>
+<li><a href="#ex2">예제 2 (스마트폰을 이용한 4개의 LED ON/OFF 제어)</a>를 소프트웨어 시리얼을 이용하도록 Sketch 프로그램을 수정하시오 </li>
+<li><a href="#ex3">예제 3 (아두이노 보드의 가변저항 값을 스마트폰에 표시하기)</a>를 소프트웨어 시리얼을 이용하도록 Sketch 프로그램을 수정하시오 </li>
+</ol>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\w\W]*?\*\//,lookbehind:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0}],string:{pattern:/(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},"class-name":{pattern:/((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,lookbehind:!0,inside:{punctuation:/(\.|\\)/}},keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,"boolean":/\b(true|false)\b/,"function":/[a-z0-9_]+(?=\()/i,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,operator:/--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+Prism.languages.c=Prism.languages.extend("clike",{keyword:/\b(asm|typeof|inline|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while)\b/,operator:/\-[>-]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|?\||[~^%?*\/]/,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)[ful]*\b/i}),Prism.languages.insertBefore("c","string",{macro:{pattern:/(^\s*)#\s*[a-z]+([^\r\n\\]|\\.|\\(?:\r\n?|\n))*/im,lookbehind:!0,alias:"property",inside:{string:{pattern:/(#\s*include\s*)(<.+?>|("|')(\\?.)+?\3)/,lookbehind:!0},directive:{pattern:/(#\s*)\b(define|elif|else|endif|error|ifdef|ifndef|if|import|include|line|pragma|undef|using)\b/,lookbehind:!0,alias:"keyword"}}},constant:/\b(__FILE__|__LINE__|__DATE__|__TIME__|__TIMESTAMP__|__func__|EOF|NULL|stdin|stdout|stderr)\b/}),delete Prism.languages.c["class-name"],delete Prism.languages.c["boolean"];
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>

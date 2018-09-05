@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>internet</title>
+
+
+<style type="text/css">
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+kbd {
+  display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style>
+div.polaroid {
+    width: 400px;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2), 0 16px 30px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin-bottom: 0.5cm;
+}
+</style>
+
+<h1 id="toc_0">컴퓨터 네트워크, 인터넷, 아두이노</h1>
+
+<ul>
+<li><strong>사물인터넷이란?</strong>
+
+<ul>
+<li>다양한 <strong>사물들을</strong> 센서와 <strong>통신기술을 더해</strong> 사물과 사물, 사물과 사람을 <strong>연결</strong>함으로써 정보를 주고 받으며 새로운 가치를 만드는 것</li>
+</ul></li>
+</ul>
+
+<h2 id="toc_1">학습목표</h2>
+
+<ul>
+<li><strong>컴퓨터 네트워크</strong>와 <strong>인터넷</strong>의 기본 개념을 학습한다.</li>
+<li><strong>아두이노</strong>를 <strong>인터넷</strong>에 연결하는 방법을 학습한다.</li>
+</ul>
+
+<hr>
+
+<h2 id="toc_2">1. 컴퓨터 네트워크</h2>
+
+<ul>
+<li>컴퓨터 네트워크는 둘 이상의 컴퓨터의 집합이며, <strong>컴퓨터 간에 정보와 자원을 공유하기 위해 연결</strong>된 것</li>
+<li>네트워크 상의 컴퓨터는 전화선, 동축 케이블, 위성통신, 무선 등 <strong>다양한 통신 기술로 상호 연결</strong>되어 있음</li>
+<li>컴퓨터들은 지리적으로 어느 곳에서나 위치할 수 있음.</li>
+</ul>
+
+<p><img src="http://www.conceptdraw.com/How-To-Guide/picture/Hybrid-satellite-and-common-carrier-network-diagram.png" alt=""></p>
+
+<h3 id="toc_3">1.1 네트워크 종류</h3>
+
+<ul>
+<li><p>네트워크 범위에 따른 분류</p>
+
+<ul>
+<li><strong>LAN (Local Area Network)</strong>
+
+<ul>
+<li>집, 사무실, 학교, 대학 캠퍼스 등과 같이 소규모 공간 내의 컴퓨터들을 연결하는 근거리 통신망</li>
+</ul></li>
+<li><strong>WAN (Wide Area Network</strong>
+
+<ul>
+<li>국가, 대륙 등과 같은 넓은 지역을 연결하는 원거리 통신망</li>
+<li>다른 지역의 LAN이나 다른 종류의 네트워크를 연결하는 네트워크</li>
+</ul></li>
+</ul>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/LAN_WAN_scheme.svg/300px-LAN_WAN_scheme.svg.png" alt=""></p></li>
+</ul>
+
+<h3 id="toc_4">1.2 네트워크 기술</h3>
+
+<ul>
+<li><p><strong>이더넷 (Ethernet)</strong></p>
+
+<ul>
+<li>네트워크에 연결된 각 기기들이 48비트 길이의 고유의 <strong>MAC (Media Access Control)주소</strong>를 가지고 이 주소를 이용해 상호간에 데이터를 주고 받음</li>
+<li>일반적으로 LAN에서 가장 많이 활용되는 기술 규격</li>
+<li><a href="https://en.wikipedia.org/wiki/IEEE_802.3">IEEE 802.3</a> 표준 규격</li>
+<li>버스 토폴로지를 사용</li>
+</ul>
+
+<p><img src="http://cfile4.uf.tistory.com/image/250F4D4D577BC386127079" alt=""></p></li>
+<li><p><strong>와이파이 (WiFi)</strong></p>
+
+<ul>
+<li>유선 LAN 형태인 이더넷의 단점을 보완하기 위해 고안된 기술
+
+<ul>
+<li>보통 폐쇄되지 않은 넓은 공간(예를 들어, 하나의 사무실)에 하나의 <strong>핫스팟</strong>을 설치하며, <strong>외부 WAN과 백본 스위치, 각 사무실 핫스팟 사이를 이더넷 네트워크로 연결</strong></li>
+<li><strong>핫스팟부터 각 사무실의 컴퓨터는 무선으로 연결</strong></li>
+</ul></li>
+<li>주로 2.4 GHz (12센티미터) UHF 및 5 GHz (6센티미터) SHF의 ISM (Industiral Scientific and Medical) 무선 대역을 사용</li>
+<li><a href="https://ko.wikipedia.org/wiki/IEEE_802.11">IEEE 802.11</a> 표준 규격</li>
+</ul>
+
+<p><img src="http://home.heartofiowa.net/wp-content/uploads/2013/03/WiFi-Network.gif" alt=""></p></li>
+</ul>
+
+<h2 id="toc_5">2. 인터넷</h2>
+
+<ul>
+<li><strong>인터넷</strong>은 <strong>TCP/IP 프로토콜</strong>을 이용해 정보를 주고 받는 <strong>컴퓨터 네트워크</strong>이다.</li>
+</ul>
+
+<h3 id="toc_6">2.1 TCP/IP 프로토콜</h3>
+
+<ul>
+<li><p>프로토콜이란?</p>
+
+<ul>
+<li><p>통신 프로토콜 또는 통신 규약은 컴퓨터나 원거리 통신 장비 사이에서 메시지를 주고 받는 양식과 규칙의 체계 <a href="https://ko.wikipedia.org/wiki/%ED%86%B5%EC%8B%A0_%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C">[참고자료]</a></p>
+
+<p><img src="http://cfile29.uf.tistory.com/image/2201EE465699F29F248318" alt=""></p></li>
+</ul></li>
+<li><p><strong>인터넷 프로토콜</strong> (<strong>IP</strong>, <strong>I</strong>nternet <strong>P</strong>rocotol)</p>
+
+<ul>
+<li><strong>호스트의 주소</strong> 지정, <strong>패킷 기반</strong>의 정보 전송</li>
+<li>IP는 패킷 전달 여부를 보증하지 않고, 패킷을 보낸 순서와 받는 순서가 다를 수 있다</li>
+</ul></li>
+<li><p><strong>전송 제어 프로토콜</strong> (<strong>TCP</strong>, <strong>T</strong>ransmission <strong>C</strong>ontrol <strong>P</strong>rotocol)</p>
+
+<ul>
+<li><strong>TCP</strong>는 <strong>IP</strong> 위에서 동작하는 프로토콜로, 데이터의 전달을 보증하고 보낸 순서대로 받게 해준다.</li>
+</ul>
+
+<p><img src="https://image.slidesharecdn.com/081-111113041506-phpapp01/95/08-1-3-728.jpg?cb=1321157739" alt="">
+[참고자료, <a href="https://image.slidesharecdn.com/081-111113041506-phpapp01/95/08-1-3-728.jpg?cb=1321157739">https://image.slidesharecdn.com/081-111113041506-phpapp01/95/08-1-3-728.jpg?cb=1321157739</a>]     </p></li>
+</ul>
+
+<h3 id="toc_7">2.2 IP 주소</h3>
+
+<ul>
+<li>컴퓨터 네트워크에서 <strong>IP(Internet Protocol) 주소</strong>는 전세계 컴퓨터에 부여된 <strong>고유의 식별 주소</strong>다</li>
+<li><strong>IPv4</strong> (IP version 4) 주소 체계
+
+<ul>
+<li>0~255 범위의 10진수 4개와 .(점)으로 표현하며, 실제로 32비트로 구성됨</li>
+<li>예, 211.102.111.012<br></li>
+</ul></li>
+<li><strong>IPv6</strong> (IP version 6) 주소 체계
+
+<ul>
+<li>IPv4의 주소 부족 문제 해결을 위해 제정됨</li>
+<li>128비트로 구성됨</li>
+<li>예, 3122:FFAB:1234:3120:1111:DCDD:2241:0099</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_8">2.3 자동 IP (DHCP)와 고정 IP</h3>
+
+<ul>
+<li>IP 주소 할당 방식에 따라 고정 IP와 자동 IP로 구분됨</li>
+<li><strong>고정 IP 주소</strong>
+
+<ul>
+<li>인터넷 서비스 업체의 의해서 할당된 IP 주소로서 항상 고정된 주소임</li>
+</ul></li>
+<li><strong>자동 IP 주소 (Dynamic Host Configuration Protocol, DHCP)</strong>
+
+<ul>
+<li>컴퓨터가 부팅될 때마다 DHCP 서버에 의해 할당된 IP 주소로서 유동적임.</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_9">2.4 게이트웨이</h3>
+
+<ul>
+<li>다른 네트워크로 들어가는 톨게이트 역할을 하는 네트워크 포인트</li>
+<li>외부 인터넷으로 나가기 위해서는 반드시 게이트웨이 설정이 필요함</li>
+<li>게이트웨이에도 중복되지 않는 IP 주소가 필요함
+
+<ul>
+<li>일반적으로 게이트웨어 IP 주소는 컴퓨터에 할당된 IP 주소 중 끝자리만 다른형태, 보통 1을 지정</li>
+<li>예, 211.102.111.1</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_10">2.5 DNS</h3>
+
+<ul>
+<li><strong>도메인 네임 시스템 (Domain Name System, DNS)</strong>는 사람이 이해하기 쉬운 도메인 이름을 숫자로 식별된 IP 주소로 변환해 줌
+<img src="https://xvp.akamaized.net/assets/customer_tools/dns_leak/dns-explained-e6ae84db517c1ed9b9c7c82116a0de18.png" alt=""></li>
+</ul>
+
+<h3 id="toc_11">2.6 IP 주소 및 네트워크 정보를 확인하는 방법</h3>
+
+<ul>
+<li><p>운영체계가 MS 윈도우 라면,</p>
+
+<ol>
+<li>[<strong>시작</strong>]-[<strong>실행</strong>]에서 <em>cmd</em>를 입력</li>
+<li><strong>명령 프롬프트</strong> 창에서 <em>ipconfig /all</em> 명령을 입력하여 실행</li>
+</ol>
+
+<p><img src="http://www.conniq.com/FAQ/images/ipaddress-computer.gif" alt="">  </p></li>
+</ul>
+
+<hr>
+
+<h2 id="toc_12">3. 아두이노와 인터넷</h2>
+
+<ul>
+<li><p>아두이노에서 인터넷을 사용하려면 <strong>이더넷 (Ethernet)</strong>이나 <strong>와이파이 (WiFi)</strong>을 지원하는 모듈이나 쉴드 혹은 이더넷이나 와이파이 기능이 내장된 보드를 이용해야 한다.</p>
+
+<p><img src="images/ethernet_wifi_shield.png" alt=""></p></li>
+</ul>
+
+<h3 id="toc_13">3.1 이더넷 쉴드</h3>
+
+<ul>
+<li><p>아두이노 이더넷 쉴드 (정품)
+<div class="polaroid">
+    <img src="https://cdn.instructables.com/FDP/0VOX/H05NHCWO/FDP0VOXH05NHCWO.LARGE.jpg">
+</div></p></li>
+<li><p><a href="http://www.instructables.com/id/Arduino-Ethernet-Shield-Tutorial/">[참고자료] ARDUINO ETHERNET SHIELD TUTORIAL</a></p></li>
+</ul>
+
+<h3 id="toc_14">3.2 와이파이 쉴드 및 모듈</h3>
+
+<ul>
+<li><p>아두이노 와이파이 쉴드 (정품)
+<div class="polaroid">
+    <img src="https://store-cdn.arduino.cc/uni/catalog/product/cache/1/image/500x375/f8876a31b63532bbba4e781c30024a0a/s/t/store_a000058_iso.jpg">
+</div></p></li>
+<li><p>다양한 종류의 와이파이 쉴드 및 모듈이 시중에 판매되고 있으나, 사용법이 제품별로 다소 상이함.</p></li>
+</ul>
+
+<h3 id="toc_15">3.3 와아파이 결합 보드</h3>
+
+<ul>
+<li>WizArduino MEGA WiFi
+<div class="polaroid">
+        <img src="https://github.com/Wiznet/WizFi310_arduino_library/raw/master/images/WizArduino_Mega_Wifi.png?raw=true">
+</div></li>
+</ul>
+
+<p><a name="practice"> </a></p>
+
+<h2 id="toc_16">4. WizArduino MEGA WiFi를 이용한 인터넷 연결 실습</h2>
+
+<h3 id="toc_17">4.1 라이브러리 및 예제 설치</h3>
+
+<ol>
+<li><a href="https://github.com/Wiznet/WizFi310_arduino_library">https://github.com/Wiznet/WizFi310_arduino_library</a> 접속</li>
+<li><p>라이브러리 및 예제 다운로드</p>
+
+<div class="polaroid">
+        <img src="images/download_library.png">
+</div></li>
+<li><p>다운로드된 zip 파일  압축 풀기</p></li>
+<li><p>아두이노 IDE에서 [<strong>스케치</strong>]-[<strong>라이브러리 포함하기</strong>]-[<strong>.ZIP 라이브러리 추가...</strong>] 선택</p>
+
+<div class="polaroid">
+        <img src="images/include_library.png">
+</div></li>
+<li><p>압축이 풀린 폴더 하위의 폴더를 선택 후 [<strong>열기</strong>] 클릭
+<div class="polaroid">
+        <img src="images/folder_open1.png">
+</div></p></li>
+<li><p>라이브러리 추가 확인
+<div class="polaroid">
+        <img src="images/result.png">
+</div></p></li>
+</ol>
+
+<h3 id="toc_18">4.2 WebClient 예제 실행</h3>
+
+<ol>
+<li>아두이노 IDE의 [<strong>파일</strong>]-[<strong>예제</strong>]-[<strong>WizFi310</strong>]-[<strong>WebClient</strong>] 선택</li>
+<li><p>WiFi 네트워크 설정</p>
+
+<div class="polaroid">
+        <img src="images/id_password.png">
+</div></li>
+<li><p>WizArduino MEGA WiFi 보드를 mini-USB (5pin)으로 PC와 연결 후, 업로드</p>
+
+<ul>
+<li>아두이노 IDE의 [<strong>툴</strong>]-[<strong>보드</strong>]에서  <strong><q>Arduino/Genuino Mega or Mega 2560</q></strong> 선택 해야함</li>
+</ul>
+
+<div class="polaroid">
+        <img src="images/upload1.png">
+</div></li>
+<li><p>시리얼 모니터 창에서 결과 확인</p>
+
+<ul>
+<li>시리얼 모니터 창 하단에 <strong>115200 보드레이트</strong> 로 설정해야 함
+<div class="polaroid">
+<img src="images/serial_monitor1.png">
+</div></li>
+</ul></li>
+</ol>
+
+<h3 id="toc_19">4.2 WebClient 예제 분석</h3>
+
+<h4 id="toc_20">4.2.1 선언부</h4>
+
+<ul>
+<li><p>WizFi310 와이파이 모듈을 사용하기 위해 필요한 WizFi310 라이브러리 선언</p>
+
+<div><pre><code class="language-c">#include &quot;WizFi310.h&quot;</code></pre></div></li>
+<li><p>와이파이 무선 액세스 포인터의 네트워크 ID와 패스워드 설정</p>
+
+<div><pre><code class="language-c">char ssid[] = &quot;DIR-815_Wiznet&quot;;    // your network SSID (name)
+char pass[] = &quot;12345678&quot;;          // your network password
+int status = WL_IDLE_STATUS;       // the Wifi radio&#39;s status</code></pre></div></li>
+<li><p>인터넷을 통해 접속할 서버 주소 (다른 주소)</p>
+
+<div><pre><code class="language-c">char server[] = &quot;arduino.cc&quot;;</code></pre></div></li>
+<li><p>WiFiClient 객체 선언</p>
+
+<div><pre><code class="language-c">// Initialize the Ethernet client object
+WiFiClient client;</code></pre></div>
+
+<ul>
+<li><a href="https://github.com/Wiznet/WizFi310_arduino_library/blob/master/src/WizFi310Client.cpp">WiFiClient</a>는 서버와의 연결 및 데이터 수신/전송 기능을 구현한 클래스</li>
+</ul></li>
+<li><p>printWifiStatus() 함수 프로토타입 선언</p>
+
+<div><pre><code class="language-c">void printWifiStatus();</code></pre></div>
+
+<ul>
+<li>함수 프로토타입 선언은 <q>함수정의가 뒤에 나올 거니까 에러 없이 넘어가줘</q>라고 우리에게 말해주는 것입니다.</li>
+</ul></li>
+</ul>
+
+<h4 id="toc_21">4.2.2 setup()함수</h4>
+
+<ul>
+<li><p>시리얼 통신 초기화 및 와아파이 모듈 초기화</p>
+
+<div><pre><code class="language-c">Serial.begin(115200);
+Serial3.begin(115200);
+WiFi.init(&amp;Serial3);</code></pre></div></li>
+<li><p>와이파이 쉴드가 없으면 더이상 진행하지 않음</p>
+
+<div><pre><code class="language-c">// check for the presence of the shield
+if (WiFi.status() == WL_NO_SHIELD) {
+    Serial.println(&quot;WiFi shield not present&quot;);
+    //SerialUSB.println(&quot;WiFi shield not present&quot;);
+    // don&#39;t continue
+    while (true);
+}</code></pre></div></li>
+<li><p>현재 와이파이 네트워크에 연결되지 않았으면, 와이파이 네트워크에 접속</p>
+
+<div><pre><code class="language-c">// attempt to connect to WiFi network
+while ( status != WL_CONNECTED) {
+    Serial.print(&quot;Attempting to connect to WPA SSID: &quot;);
+    Serial.println(ssid);
+    // Connect to WPA/WPA2 network
+    status = WiFi.begin(ssid, pass);
+}
+// you&#39;re connected now, so print out the data
+Serial.println(&quot;You&#39;re connected to the network&quot;);</code></pre></div></li>
+<li><p>server (arduino.cc)에 접속하여, <em>asciilogo.txt</em> 파일을 요청</p>
+
+<div><pre><code class="language-c">Serial.println();
+Serial.println(&quot;Starting connection to server...&quot;);
+// if you get a connection, report back via serial
+if (client.connect(server, 80)) {
+    Serial.println(&quot;Connected to server&quot;);
+    // Make a HTTP request
+    client.println(&quot;GET /asciilogo.txt HTTP/1.1&quot;);
+    client.println(&quot;Host: arduino.cc&quot;);
+    client.println(&quot;Connection: close&quot;);
+    client.println();
+}</code></pre></div></li>
+</ul>
+
+<h4 id="toc_22">4.2.3 loop()함수</h4>
+
+<ul>
+<li><p>서버로부터 온 수신 데이터가 있으면, 이를 읽어서 시리얼 모니터에 출력</p>
+
+<div><pre><code class="language-c">// if there are incoming bytes available
+// from the server, read them and print them
+while (client.available()) {
+    char c = client.read();
+    Serial.write(c);
+}</code></pre></div></li>
+<li><p>서버로의 연결이 끊어졌다면, 메시지 출력과 함께 종료</p>
+
+<div><pre><code class="language-c">// if the server&#39;s disconnected, stop the client
+if (!client.connected()) {
+Serial.println();
+Serial.println(&quot;Disconnecting from server...&quot;);
+client.stop();
+// do nothing forevermore
+    while (true);
+}</code></pre></div></li>
+</ul>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\w\W]*?\*\//,lookbehind:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0}],string:{pattern:/(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},"class-name":{pattern:/((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,lookbehind:!0,inside:{punctuation:/(\.|\\)/}},keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,"boolean":/\b(true|false)\b/,"function":/[a-z0-9_]+(?=\()/i,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,operator:/--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+Prism.languages.c=Prism.languages.extend("clike",{keyword:/\b(asm|typeof|inline|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while)\b/,operator:/\-[>-]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|?\||[~^%?*\/]/,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)[ful]*\b/i}),Prism.languages.insertBefore("c","string",{macro:{pattern:/(^\s*)#\s*[a-z]+([^\r\n\\]|\\.|\\(?:\r\n?|\n))*/im,lookbehind:!0,alias:"property",inside:{string:{pattern:/(#\s*include\s*)(<.+?>|("|')(\\?.)+?\3)/,lookbehind:!0},directive:{pattern:/(#\s*)\b(define|elif|else|endif|error|ifdef|ifndef|if|import|include|line|pragma|undef|using)\b/,lookbehind:!0,alias:"keyword"}}},constant:/\b(__FILE__|__LINE__|__DATE__|__TIME__|__TIMESTAMP__|__func__|EOF|NULL|stdin|stdout|stderr)\b/}),delete Prism.languages.c["class-name"],delete Prism.languages.c["boolean"];
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
