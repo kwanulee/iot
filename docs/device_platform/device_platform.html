@@ -106,16 +106,16 @@ kbd {
 
 <style type="text/css">
 /**
- * prism.js Dark theme for JavaScript, CSS and HTML
- * Based on the slides of the talk “/Reg(exp){2}lained/”
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
  * @author Lea Verou
  */
 
 code[class*="language-"],
 pre[class*="language-"] {
-	color: white;
+	color: black;
 	background: none;
-	text-shadow: 0 -.1em .2em black;
+	text-shadow: 0 1px white;
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	text-align: left;
 	white-space: pre;
@@ -134,6 +134,18 @@ pre[class*="language-"] {
 	hyphens: none;
 }
 
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
 @media print {
 	code[class*="language-"],
 	pre[class*="language-"] {
@@ -141,27 +153,22 @@ pre[class*="language-"] {
 	}
 }
 
-pre[class*="language-"],
-:not(pre) > code[class*="language-"] {
-	background: hsl(30, 20%, 25%);
-}
-
 /* Code blocks */
 pre[class*="language-"] {
 	padding: 1em;
 	margin: .5em 0;
 	overflow: auto;
-	border: .3em solid hsl(30, 20%, 40%);
-	border-radius: .5em;
-	box-shadow: 1px 1px .5em black inset;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
 }
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-	padding: .15em .2em .05em;
+	padding: .1em;
 	border-radius: .3em;
-	border: .13em solid hsl(30, 20%, 40%);
-	box-shadow: 1px 1px .3em -.1em black inset;
 	white-space: normal;
 }
 
@@ -169,11 +176,11 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: hsl(30, 20%, 50%);
+	color: slategray;
 }
 
 .token.punctuation {
-	opacity: .7;
+	color: #999;
 }
 
 .namespace {
@@ -185,8 +192,9 @@ pre[class*="language-"] {
 .token.boolean,
 .token.number,
 .token.constant,
-.token.symbol {
-	color: hsl(350, 40%, 70%);
+.token.symbol,
+.token.deleted {
+	color: #905;
 }
 
 .token.selector,
@@ -195,26 +203,31 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: hsl(75, 70%, 60%);
+	color: #690;
 }
 
 .token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string,
-.token.variable {
-	color: hsl(40, 90%, 60%);
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-	color: hsl(350, 40%, 70%);
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
 }
 
 .token.regex,
-.token.important {
+.token.important,
+.token.variable {
 	color: #e90;
 }
 
@@ -228,10 +241,6 @@ pre[class*="language-"] {
 
 .token.entity {
 	cursor: help;
-}
-
-.token.deleted {
-	color: red;
 }
 </style>
 
@@ -262,6 +271,15 @@ pre[class*="language-"] {
 </ul>
 
 <p><img src=images/smart-sensor.png width=600></p>
+
+<ul>
+<li>사례
+
+<ul>
+<li><a href="https://m.post.naver.com/viewer/postView.nhn?volumeNo=5511139&amp;memberNo=29546687&amp;vType=VERTICAL">물리량 측정을 위한 <strong>PocketLab</strong></a> </li>
+<li><a href="https://wearchronos.com/">일반시계는 스마트 워치로 만들어주는 <strong>Chronos</strong></a></li>
+</ul></li>
+</ul>
 
 <h3 id="toc_4">사물인터넷 서비스 부분별 센서 응용 예</h3>
 
@@ -324,16 +342,22 @@ pre[class*="language-"] {
 <h3 id="toc_7">센서 디바이스</h3>
 
 <ul>
-<li>칩셋과 모듈을 이용하여 통신이 가능하고, 주변상황을 인지하는 센서가 포함되며, 간단한 데이터 처리를 수행하는 경량 소프트웨어가 포함된 형태</li>
-<li>프로세서, 통신 모듈, 센서 모듈, 구동기 모듈, 개방형 응용 프로그래밍 인터페이스(Open Application Programming Interface,　Open API) 소프트웨어로 구성</li>
+<li><a href="https://ko.wikipedia.org/wiki/%EC%B9%A9%EC%85%8B">칩셋</a>과 통신 모듈을 이용하여 통신이 가능하고, 주변상황을 인지하는 센서가 포함되며, 간단한 데이터 처리를 수행하는 경량 소프트웨어가 포함된 형태</li>
+<li>예, 스마트폰, 웨어러블 디바이스, 스마트 센서, 등 </li>
 </ul>
+
+<!--
+- 프로세서, 통신 모듈, 센서 모듈, 구동기 모듈, 개방형 응용 프로그래밍 인터페이스(Open Application Programming Interface,　Open API) 소프트웨어로 구성
+-->
 
 <h3 id="toc_8">개방형 센서 디바이스 플랫폼</h3>
 
 <ul>
 <li>다양한 종류의 센서 디바이스를 필요로 하는 사물인터넷 서비스 개발을 효율적으로 지원할 수 있음</li>
 <li>센서 디바이스의 기능을 쉽게 이용하고 센서 내부 모듈에 대한 접근 및 제어를 효율적으로 제공할 수 있는 개방형 응용 프로그래밍 인터페이스 소프트웨어를 개방형 소스(Open Source) 기반으로 제공</li>
-<li>서비스 개발자들은 개방형 응용 프로그래밍 인터페이스를 이용하여 자신이 원하는 서비스들을 손쉽게 개발</li>
+<li><p>서비스 개발자들은 개방형 응용 프로그래밍 인터페이스를 이용하여 자신이 원하는 서비스들을 손쉽게 개발</p>
+
+<p><img src="images/sensor-device-platform-concept.png"></p></li>
 <li><p>사례</p>
 
 <p><img src="images/sensor-device-platform.png"></p></li>

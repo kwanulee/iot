@@ -12,6 +12,10 @@
 
 <img src=images/smart-sensor.png width=600>
 
+- 사례
+	- [물리량 측정을 위한 **PocketLab**](https://m.post.naver.com/viewer/postView.nhn?volumeNo=5511139&memberNo=29546687&vType=VERTICAL) 
+	- [일반시계는 스마트 워치로 만들어주는 **Chronos**](https://wearchronos.com/)
+
 ### 사물인터넷 서비스 부분별 센서 응용 예
 |분야|응용 예 | 활용센서|
 |---|---|---|
@@ -36,13 +40,20 @@
 	- 예) 개인용 컴퓨터의 운영체제(MS Window, Linux, Mac OS X), 스마트폰의 운영체제 (iOS, 안드로이드)
 
 ### 센서 디바이스
-- 칩셋과 모듈을 이용하여 통신이 가능하고, 주변상황을 인지하는 센서가 포함되며, 간단한 데이터 처리를 수행하는 경량 소프트웨어가 포함된 형태
+- [칩셋](https://ko.wikipedia.org/wiki/%EC%B9%A9%EC%85%8B)과 통신 모듈을 이용하여 통신이 가능하고, 주변상황을 인지하는 센서가 포함되며, 간단한 데이터 처리를 수행하는 경량 소프트웨어가 포함된 형태
+- 예, 스마트폰, 웨어러블 디바이스, 스마트 센서, 등 
+
+<!--
 - 프로세서, 통신 모듈, 센서 모듈, 구동기 모듈, 개방형 응용 프로그래밍 인터페이스(Open Application Programming Interface,　Open API) 소프트웨어로 구성
+-->
 
 ### 개방형 센서 디바이스 플랫폼
 - 다양한 종류의 센서 디바이스를 필요로 하는 사물인터넷 서비스 개발을 효율적으로 지원할 수 있음
 - 센서 디바이스의 기능을 쉽게 이용하고 센서 내부 모듈에 대한 접근 및 제어를 효율적으로 제공할 수 있는 개방형 응용 프로그래밍 인터페이스 소프트웨어를 개방형 소스(Open Source) 기반으로 제공
 - 서비스 개발자들은 개방형 응용 프로그래밍 인터페이스를 이용하여 자신이 원하는 서비스들을 손쉽게 개발
+	
+	<img src="images/sensor-device-platform-concept.png">
+	
 - 사례
 
 	<img src="images/sensor-device-platform.png">
