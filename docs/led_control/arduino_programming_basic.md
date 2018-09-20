@@ -58,7 +58,7 @@ void loop() {
 	```
 	
 #### [digitalWrite(pin, value)](https://www.arduino.cc/reference/en/language/functions/digital-io/digitalwrite/)
-- 이 함수는 디지털 입출력 핀 중 하나에 대해서 입력 혹은 출력을 설정
+- 이 함수는 지정된 디지털 입출력 핀으로 HIGH 혹은 LOW 값을 보냄
 - 파라미터
 	- pin: 디지털 핀 번호
 	- mode: HIGH 혹은 LOW
