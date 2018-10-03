@@ -51,7 +51,9 @@ div.polaroid {
 #### 1.2 변수 사용전 코드
 - 디지털핀 10번에 연결된 LED를 1초 동안 켜고 1초 동안 끄기를 반복하는 스케치 코드
 	
-	<iframe src="https://create.arduino.cc/editor/kwanu70/77b9a415-7ad3-4176-814b-3afc0c7da8c0/preview?embed" style="height:510px;width:100%;margin:10px 0" frameborder="0"></iframe>
+	```c
+	void setup() {  		pinMode(10,OUTPUT);	}	void loop() {  		digitalWrite(10,HIGH);  		delay(1000);  		digitalWrite(10,LOW);  		delay(1000);	}
+	```
 
 - **문제점** 
 	- 디지털핀 10번 대신에 13번을 사용하고자 하는 경우, 코드의 3개의 줄이 수정되어야 함.
@@ -81,8 +83,13 @@ div.polaroid {
 	<div class="polaroid">
 	  	<img src="images/dtime.png" width=400>
 	</div>
-- 결과 코드 : https://create.arduino.cc/editor/kwanu70/84e24028-dcc4-4386-abc9-f1e897274a31/preview
+- 결과 코드  
+
+	```c
+	/* 	변수를 사용하여 디지털 핀 출력과 지연 시간을 설정	*/ 	int k=10;	int dTime=500;	void setup() {  		pinMode(k,OUTPUT);    	}	void loop() {  		digitalWrite(k,HIGH);  		delay(dTime);  		digitalWrite(k,LOW);  		delay(dTime);	}
+	```
 	
+---
 ### 2. 함수 만들기
 - 프로그램에서 반복적으로 사용되는 부분을 함수로 만들어 사용
 
@@ -98,7 +105,9 @@ div.polaroid {
 #### 2.2 함수 사용전 코드
 - DigitalPin 8~11에 연결된 LED를 1초씩 번갈아가면서 켜고 끄는코드
 
-<iframe src="https://create.arduino.cc/editor/kwanu70/32d43ed7-073b-4d83-9be2-1c3963fbe35b/preview?embed" style="height:510px;width:100%;margin:10px 0" frameborder="0"></iframe>
+	```c
+	/*  		DigitalPin 8~11에 연결된 LED를 1초씩 번갈아가면서 켜고 끄는코드 	*/	void setup() {  		pinMode(8, OUTPUT);  		pinMode(9, OUTPUT);  		pinMode(10, OUTPUT);  		pinMode(11, OUTPUT);  	}	void loop() {  		digitalWrite(8,HIGH);  		delay(1000);		digitalWrite(8,LOW);  		delay(1000);      		digitalWrite(9,HIGH);  		delay(1000);  		digitalWrite(9,LOW);  		delay(1000);      		digitalWrite(10,HIGH);  		delay(1000);  		digitalWrite(10,LOW);  		delay(1000);      		digitalWrite(11,HIGH);  		delay(1000);  		digitalWrite(11,LOW); 	 	delay(1000);	}
+	```
 	
 - **문제점** 
 	- 여러 개의 LED의 on/off 상태를 1초 간격으로 제어하는 유사한 코드가 반복됨
@@ -122,7 +131,11 @@ div.polaroid {
 	  	<img src="images/function-call.png"> 
 	 </div>
 	 
-- 결과 코드 : https://create.arduino.cc/editor/kwanu70/dd5e66fc-cf12-4d6e-bace-6c488e124e06/preview
+- 결과 코드
+
+	```c
+	/*  		함수를 사용하여 4개의 LED를 순차적으로 깜박이기	*/	void setup() { // 디지털입출력 핀 8, 9, 10, 11번을 출력으로 설정  		pinMode(8, OUTPUT);  		pinMode(9, OUTPUT);  		pinMode(10, OUTPUT);  		pinMode(11, OUTPUT); 	}	void loop() {  // 내부의 명령이 무한 반복  		blink_ft(8);  // blink_ft( ) 함수를 호출, 변수 pin의 값으로 8 전달   		blink_ft(9);  		blink_ft(10);  		blink_ft(11);	}	void blink_ft(int pin) { // 디지털입출력 핀 pin번을 1초 간격으로 on/off  		digitalWrite(pin, HIGH);  		delay(1000);  		digitalWrite(pin, LOW);  		delay(1000);	}
+	```
 
 ### 3. FOR 문 활용하기
 #### 3.1 앞 예제의 문제점
@@ -144,16 +157,10 @@ div.polaroid {
 #### 3.3 for 문 적용 예제
 
 ```c
-int k;
-
-void setup() {   	for (k=8; k<12; k++) {  		pinMode(k, OUTPUT);  	} }
-...
-void loop() {
-	for (k=8; k<12; k++) {    		blink_ft(k);     	}}
+/*  for 문과  함수를 사용하여 4개의 LED를 순차적으로 깜박이기*/int k;void setup() {  for (k=8; k<12; k++) {    pinMode(k, OUTPUT);  } }void loop() {  for (k=8; k<12; k++) {    blink_ft(k);  }  }void blink_ft(int pin) { // 디지털입출력 핀 pin번을 1초 간격으로 on/off  digitalWrite(pin, HIGH);  delay(1000);  digitalWrite(pin, LOW);  delay(1000);}
 ```
-	
-- 결과코드 : https://create.arduino.cc/editor/kwanu70/df95ffac-d2e3-44ae-a85e-7788ca704431
 
+---
 ### 4. Array 문 활용하기
 #### 4.1 앞 예제의 문제점
 - for문의 인텍스 변수 k가 디지털입출력 핀의 번호를 직접 나타냄
@@ -180,7 +187,9 @@ void loop() {
 	- 사용하고자 하는 디지털 입출력 핀을 배열에 저장
 	- for문을 사용하여 호출
 
-<iframe src="https://create.arduino.cc/editor/kwanu70/fa434a61-5c35-4a0b-a913-75fa18353a61/preview?embed" style="height:510px;width:100%;margin:10px 0" frameborder="0"></iframe>
+```c
+/*  배열, for 문, 함수를 사용하여 4개의 LED를 순차적으로 깜박이기*/int pinLED[] = {6,9,11,12};int k;void setup() {  for (k=0; k<4; k++) {    pinMode(pinLED[k], OUTPUT);  } }void loop() {  for (k=0; k<4; k++) {    blink_ft(pinLED[k]);  }  }void blink_ft(int pin) { // 디지털입출력 핀 pin번을 1초 간격으로 on/off  digitalWrite(pin, HIGH);  delay(1000);  digitalWrite(pin, LOW);  delay(1000);}
+```
 
 ---
 ### 5. 실습 과제
