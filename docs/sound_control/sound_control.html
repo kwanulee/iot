@@ -303,7 +303,7 @@ div.polaroid {
 <p><img src="images/geo_series.png" width=300></p>
 
 <p><img src="images/note_freq.png" width=450></p></li>
-<li><p><q>도레미파솔라시</q>는 12음계 중 7개만 를 표현</p></li>
+<li><p><q>도레미파솔라시</q>는 12음계 중 7개만을 표현</p></li>
 <li><p><q>C(도), D(레), E(미), F(파), G(솔), 라(A), 시(B)</q></p>
 
 <p><img src="images/7octave.png" width=500></p></li>
@@ -352,7 +352,7 @@ div.polaroid {
 <ul>
 <li>표준 <q><strong>라(A)</strong></q>음 :  440Hz의 주파수(약 2272μ초의 주기)</li>
 <li>디지털출력으로 HIGH와 LOW를 각각 1136μ초씩 출력</li>
-<li><strong>delayMicrosrcons</strong>( )함수 : μ초 단위의 시간지연</li>
+<li><strong>delayMicroseconds</strong>( )함수 : μ초 단위의 시간지연</li>
 </ul>
 
 <p><a name="3.2.1"> </a></p>
@@ -528,35 +528,33 @@ int  freq[ ] = {262, 294, 330, 349, 392, 440, 494};</code></pre></div></li>
 <p><a name="code"></a>
 - <strong>전체 코드</strong></p>
 
-<div><pre><code class="language-none">```c
-const  int  piezo=7;
-char code[ ]= {&#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;A&#39;, &#39;B&#39;};
-unsigned int  freq[ ]= {262, 294, 330, 349, 392, 440, 494};
-char mData[ ]=&quot;CCGGAAGpFFEEDDCpGGFFEEDpGGFFEEDpCCGGAAGpFFEEDDCp&quot;;
-const  byte mSize=sizeof(mData);
-
-void  setup( ) {
-    pinMode(piezo, OUTPUT);
-}
-
-void loop( ) {
-    int  playT=500;   // 1박자를 0.5초
-    for (int  m=0; m&lt;mSize; m++) {
-       for(int k=0; k&lt;7; k++) {
-           if( mData[m]==code[k] ) {        // 배열 mData[]의 문자와 배열 code[] 의 문자 비교하여 인텍스 k 검색
-              tone(piezo, freq[k], playT);  // freq[k]의 값을 tone( )함수 전달
-              delay(playT);                 // 1박자 연주 
-           }
-        }
-        if (mData[m]==&#39;p&#39;) {                // 배열 mData[]의 문자가 &#39;p&#39; 인 경우 
-          delay(playT);                     // 1박자 더 쉼
-        }
+<div><pre><code class="language-c">    const  int  piezo=7;
+    char code[ ]= {&#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;A&#39;, &#39;B&#39;};
+    unsigned int  freq[ ]= {262, 294, 330, 349, 392, 440, 494};
+    char mData[ ]=&quot;CCGGAAGpFFEEDDCpGGFFEEDpGGFFEEDpCCGGAAGpFFEEDDCp&quot;;
+    const  byte mSize=sizeof(mData);
+ 
+    void  setup( ) {
+        pinMode(piezo, OUTPUT);
     }
-    noTone(piezo);
-    delay(2000);
-    exit(0);
-}  
-```</code></pre></div>
+     
+    void loop( ) {
+        int  playT=500;   // 1박자를 0.5초
+        for (int  m=0; m&lt;mSize; m++) {
+            for(int k=0; k&lt;7; k++) {
+                if( mData[m]==code[k] ) {        // 배열 mData[]의 문자와 배열 code[] 의 문자 비교하여 인텍스 k 검색
+                    tone(piezo, freq[k], playT);  // freq[k]의 값을 tone( )함수 전달
+                  delay(playT);                 // 1박자 연주 
+                }
+            }
+            if (mData[m]==&#39;p&#39;) {                // 배열 mData[]의 문자가 &#39;p&#39; 인 경우 
+              delay(playT);                     // 1박자 더 쉼
+            }
+        }
+        noTone(piezo);
+        delay(2000);
+        exit(0);
+    }  </code></pre></div>
 
 <h3 id="toc_17">4.3 예제 5: 간이형 키보드 만들기</h3>
 
@@ -609,7 +607,7 @@ void loop() {
 
 <div><pre><code class="language-c">int piezo = 7;                      //피에조가 연결된 디지털입출력 핀
 int sw[4] = {2, 3, 4, 5};           // 4개 스위치 지정
-int freq[7]= {262, 294, 330, 349};  // 도, 레, 미, 파의 주파수
+int freq[4]= {262, 294, 330, 349};  // 도, 레, 미, 파의 주파수
 int val = 0;    // 변수의 초기값
 
 void setup() {
@@ -647,7 +645,7 @@ void loop() {
 
 <div><pre><code class="language-c">int piezo = 7;                      //피에조가 연결된 디지털입출력 핀
 int sw[4] = {2, 3, 4, 5};           // 4개 스위치 지정
-int freq[4]= {262, 294, 330, 349};  // 도, 레, 미, 파의 주파수
+int freq[7]= {262, 294, 330, 349};  // 도, 레, 미, 파의 주파수
 int val = 0;    // 변수의 초기값
 
 void setup() {
