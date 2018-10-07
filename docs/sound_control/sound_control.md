@@ -36,7 +36,7 @@ div.polaroid {
 	
 	<img src="images/note_freq.png" width=450>
 
-- "도레미파솔라시"는 12음계 중 7개만 를 표현
+- "도레미파솔라시"는 12음계 중 7개만을 표현
 - "C(도), D(레), E(미), F(파), G(솔), 라(A), 시(B)"
 
 	<img src="images/7octave.png" width=500>
@@ -233,7 +233,7 @@ void scalePlay(int freq) {
 <a name="code"></a>
 - **전체 코드**
 
-	```c
+```c
 	const  int  piezo=7;
 	char code[ ]= {'C', 'D', 'E', 'F', 'G', 'A', 'B'};
 	unsigned int  freq[ ]= {262, 294, 330, 349, 392, 440, 494};
@@ -241,17 +241,17 @@ void scalePlay(int freq) {
 	const  byte mSize=sizeof(mData);
  
 	void  setup( ) {
-	    pinMode(piezo, OUTPUT);
+	   	pinMode(piezo, OUTPUT);
 	}
 	 
 	void loop( ) {
-	    int  playT=500;   // 1박자를 0.5초
-	    for (int  m=0; m<mSize; m++) {
- 	       for(int k=0; k<7; k++) {
-	           if( mData[m]==code[k] ) {        // 배열 mData[]의 문자와 배열 code[] 의 문자 비교하여 인텍스 k 검색
-	              tone(piezo, freq[k], playT);  // freq[k]의 값을 tone( )함수 전달
+	   	int  playT=500;   // 1박자를 0.5초
+	   	for (int  m=0; m<mSize; m++) {
+ 	      	for(int k=0; k<7; k++) {
+	         	if( mData[m]==code[k] ) {        // 배열 mData[]의 문자와 배열 code[] 의 문자 비교하여 인텍스 k 검색
+	             	tone(piezo, freq[k], playT);  // freq[k]의 값을 tone( )함수 전달
 	              delay(playT);                 // 1박자 연주 
-	           }
+	         	}
 	        }
 	        if (mData[m]=='p') {                // 배열 mData[]의 문자가 'p' 인 경우 
 	          delay(playT);                     // 1박자 더 쉼
@@ -261,7 +261,7 @@ void scalePlay(int freq) {
 	    delay(2000);
 	    exit(0);
 	}  
-	```
+```
 
 ### 4.3 예제 5: 간이형 키보드 만들기
 
