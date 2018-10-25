@@ -25,28 +25,18 @@ div.polaroid {
 	<img src="images/lcd_module_connection.png" >
 	</div>
 
-- 베이스보드 사용시 TextLCD 모듈 연결 구성
-	- 1단계  
-		- 전원선(**5V**,**IN**)을 브레드보드의 **+**, **-** 에 연결
-		- 아두이노보드 POWER의 **5V** 핀을 브레드보드의 **+**에, POWER의 **GND** 핀을 브레드보드의 **-** 연결
-		- 베이스보드 JP3의 **RW**와 브레드보드의 **-** 연결
+- 베이스보드 사용시 TextLCD 모듈 연결 구성  
+	- 전원연결선의 **붉은색**을 **5V**로, **검은색**을 **GND**로 연결
 		
-		<div class="polaroid">
-		<img src="images/lcd_module_connection1.png" width=400>
-		</div>
-
-	- 2단계
-		- 베이스보드 JP4의 **D4~D7**과 아두이노보드의 디지털입출력 핀 **5~2** 순으로 연결
-		- 베이스보드 JP3의 **E**와 아두이노보드의 디지털입출력 핀 **11**번 연결   
-		- 베이스보드 JP3의 **RS**와 아두이노보드의 디지털입출력 핀 **12**번 연결
+	- 베이스보드 JP4의 **D4~D7**과 아두이노보드의 디지털입출력 핀 **5~2** 순으로 연결
+	- 베이스보드 JP3의 **E**와 아두이노보드의 디지털입출력 핀 **11**번 연결   
+	- 베이스보드 JP3의 **RS**와 아두이노보드의 디지털입출력 핀 **12**번 연결
+	- 베이스보드 JP3의 **RW**와 아두이노보드의 디지털입출력 핀 **GND**에 연결
 		
 		<div class="polaroid">
 		<img src="images/lcd_module_connection_baseboard.png" width=400>
 		</div>
-	- 최종 하드웨어 구성 사진
-	  <div class="polaroid">
-		<img src="images/lcd_module_connection3.png" width=400>
-		</div>
+	
 
 ## 아두이노 Text LCD 함수
 ![](images/text_lcd_functions.png)
