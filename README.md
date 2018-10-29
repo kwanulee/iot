@@ -19,7 +19,7 @@
 5. [아두이노에서 textLCD 사용하기 (실습)](https://kwanulee.github.io/iot/docs/text_lcd/text_lcd.html)
 
 6. [아날로그 입력 및 VR 사용하기 (실습)](https://kwanulee.github.io/iot/docs/vr_input/vr_input.html)
-7. [아두이노에서 센서사용 하기 (실습)](https://kwanulee.github.io/iot/docs/sensor/sensor.html)
+7. [아두이노에서 센서사용 하기 (실습)](https://kwanulee.github.io/iot/docs/sensors/sensor.html)
 
 <!--
 - 아두이노로 모터 제어 (실습)
