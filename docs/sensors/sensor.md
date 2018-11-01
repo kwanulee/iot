@@ -129,7 +129,11 @@ void setup() {  pinMode(5, OUTPUT);   // PWM 출력(디지털 핀 5)으로 LED 
 <a name="exercise"></a>
 ## 4. 연습문제
 	
-1. 빛의 밝기에 따라 LED의 깜박이는 속도가 4단계로 조정되는 스케치를 만들어 보자.
+1. [예제1](#cds_ex)의 스케치코드에서 cdsValue와 pwmValue의 값을 다음과 같이textLCD에 표시하도록 스케치를 만들어 보자.
+
+	<div class="polaroid">
+		<img src="images/practice1.png">
+    </div>
 	
 4. 물체의 거리에 따라 도레미파솔라시도를 연주하는 스케치를 만들어 보자.
 	- 0~10cm : 도 
