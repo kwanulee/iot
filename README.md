@@ -26,10 +26,9 @@
 -->
 
 ## 6. 네트워킹 기술
+- [사물인터넷 네트워크 (이론)](https://kwanulee.github.io/iot/docs/network/iot_network.html)
 - [아두이노 시리얼통신 (실습)](https://kwanulee.github.io/iot/docs/serial/serial.html)
 - [아두이노 블루투스 통신 (실습)](https://kwanulee.github.io/iot/docs/bluetooth/bluetooth.html)
-
-- [컴퓨터 네트워크, 인터넷, 아두이노 (이론)](https://kwanulee.github.io/iot/docs/internet/internet.html)
 - [아두이노 와이파이 통신 (실습)](https://kwanulee.github.io/iot/docs/internet/internet.html#practice)
 - [웹과 아두이노 (이론 및 실습)](https://kwanulee.github.io/iot/docs/internet/web_arduino.html)
 
