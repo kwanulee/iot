@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>iot_network</title>
+
+
+<style type="text/css">
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+kbd {
+  display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style>
+div.polaroid {
+    width: 400px;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2), 0 16px 30px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin-bottom: 0.5cm;
+}
+</style>
+
+<h1 id="toc_0">사물인터넷 네트워크</h1>
+
+<h2 id="toc_1">학습 목표</h2>
+
+<ul>
+<li>사물인터넷의 주요 네트워크 기술의 용어와 개념을 이해한다.</li>
+</ul>
+
+<hr>
+
+<h2 id="toc_2">1. 개요</h2>
+
+<ul>
+<li><p><strong>사물인터넷이란?</strong></p>
+
+<ul>
+<li>다양한 <strong>사물들을</strong> 센서와 <strong>통신기술을 더해</strong> 사물과 사물, 사물과 사람을 <strong>연결</strong>함으로써 정보를 주고 받으며 새로운 가치를 만드는 것</li>
+</ul></li>
+<li><p>사물인터넷의 주요 기술 분야</p>
+
+<ul>
+<li>디바이스/센서 플랫폼</li>
+<li><strong>네트워크 인프라</strong></li>
+<li>서비스 플랫폼</li>
+</ul></li>
+<li><p><strong>네트워크 인프라</strong>는 사물(<em>디바이스/센서 플랫폼</em>)이 인터넷에 연결되도록 지원하는 기술</p>
+
+<ul>
+<li><a href="#2">컴퓨터네트워크</a></li>
+<li><a href="#3">근거리무선통신</a></li>
+<li><a href="#4">저전력 장거리 통신</a></li>
+</ul></li>
+</ul>
+
+<h2 id="toc_3"><a name="2"></a></h2>
+
+<h2 id="toc_4">2. 컴퓨터 네트워크과 인터넷</h2>
+
+<h3 id="toc_5">2.1. 컴퓨터 네트워크</h3>
+
+<ul>
+<li>컴퓨터 네트워크는 둘 이상의 컴퓨터의 집합이며, <strong>컴퓨터 간에 정보와 자원을 공유하기 위해 연결</strong>된 것</li>
+<li>네트워크 상의 컴퓨터는 전화선, 동축 케이블, 위성통신, 무선 등 <strong>다양한 통신 기술로 상호 연결</strong>되어 있음</li>
+<li><p>컴퓨터들은 지리적으로 어느 곳에서나 위치할 수 있음.</p>
+
+<div class="polaroid">
+<img src="http://www.conceptdraw.com/How-To-Guide/picture/Hybrid-satellite-and-common-carrier-network-diagram.png" >
+</div></li>
+</ul>
+
+<h4 id="toc_6">2.1.1 네트워크 종류</h4>
+
+<ul>
+<li><p>네트워크 범위에 따른 분류</p>
+
+<ul>
+<li><strong>LAN (Local Area Network)</strong>
+
+<ul>
+<li>집, 사무실, 학교, 대학 캠퍼스 등과 같이 소규모 공간 내의 컴퓨터들을 연결하는 근거리 통신망</li>
+</ul></li>
+<li><p><strong>WAN (Wide Area Network</strong></p>
+
+<ul>
+<li>국가, 대륙 등과 같은 넓은 지역을 연결하는 원거리 통신망</li>
+<li>다른 지역의 LAN이나 다른 종류의 네트워크를 연결하는 네트워크</li>
+</ul>
+
+<div class="polaroid">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/LAN_WAN_scheme.svg/300px-LAN_WAN_scheme.svg.png" >
+</div></li>
+</ul></li>
+</ul>
+
+<h4 id="toc_7">2.1.2 네트워크 기술</h4>
+
+<ul>
+<li><p><strong>이더넷 (Ethernet)</strong></p>
+
+<ul>
+<li>네트워크에 연결된 각 기기들이 48비트 길이의 고유의 <strong>MAC (Media Access Control)주소</strong>를 가지고 이 주소를 이용해 상호간에 데이터를 주고 받음</li>
+<li>일반적으로 LAN에서 가장 많이 활용되는 기술 규격</li>
+<li><a href="https://en.wikipedia.org/wiki/IEEE_802.3">IEEE 802.3</a> 표준 규격</li>
+<li><p>버스 토폴로지를 사용</p>
+
+<div class="polaroid">
+        <img src="http://cfile4.uf.tistory.com/image/250F4D4D577BC386127079" >
+</div></li>
+</ul></li>
+<li><p><strong>와이파이 (WiFi)</strong></p>
+
+<ul>
+<li>유선 LAN 형태인 이더넷의 단점을 보완하기 위해 고안된 기술
+
+<ul>
+<li>보통 폐쇄되지 않은 넓은 공간(예를 들어, 하나의 사무실)에 하나의 <strong>핫스팟</strong>을 설치하며, <strong>핫스팟을 통해 인터넷에 연결</strong></li>
+<li><strong>핫스팟부터 각 사무실의 컴퓨터는 무선으로 연결</strong></li>
+</ul></li>
+<li><a href="https://en.wikipedia.org/wiki/ISM_band">ISM (Industiral Scientific and Medical)</a> 무선 대역으로 지정된 2.4 GHz (12센티미터)와 5 GHz (6센티미터) 주파수를 이용</li>
+<li><p><a href="https://ko.wikipedia.org/wiki/IEEE_802.11">IEEE 802.11</a> 표준 규격</p>
+
+<div class="polaroid">
+    <img src="http://home.heartofiowa.net/wp-content/uploads/2013/03/WiFi-Network.gif" >
+</div></li>
+</ul></li>
+</ul>
+
+<hr>
+
+<h3 id="toc_8">2.2. 인터넷</h3>
+
+<ul>
+<li><strong>인터넷</strong>은 <strong>TCP/IP 프로토콜</strong>을 이용해 정보를 주고 받는 <strong>컴퓨터 네트워크</strong>이다.</li>
+</ul>
+
+<h4 id="toc_9">2.2.1 TCP/IP 프로토콜</h4>
+
+<ul>
+<li><p>프로토콜이란?</p>
+
+<ul>
+<li><p>통신 프로토콜 또는 통신 규약은 컴퓨터나 원거리 통신 장비 사이에서 메시지를 주고 받는 양식과 규칙의 체계 <a href="https://ko.wikipedia.org/wiki/%ED%86%B5%EC%8B%A0_%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C">[참고자료]</a></p>
+
+<div class="polaroid">
+    <img src="http://cfile29.uf.tistory.com/image/2201EE465699F29F248318" >
+</div></li>
+</ul></li>
+<li><p><strong>인터넷 프로토콜</strong> (<strong>IP</strong>, <strong>I</strong>nternet <strong>P</strong>rocotol)</p>
+
+<ul>
+<li><strong>호스트의 주소</strong> 지정, <strong>패킷 기반</strong>의 정보 전송</li>
+<li>IP는 패킷 전달 여부를 보증하지 않고, 패킷을 보낸 순서와 받는 순서가 다를 수 있다</li>
+</ul></li>
+<li><p><strong>전송 제어 프로토콜</strong> (<strong>TCP</strong>, <strong>T</strong>ransmission <strong>C</strong>ontrol <strong>P</strong>rotocol)</p>
+
+<ul>
+<li><strong>TCP</strong>는 <strong>IP</strong> 위에서 동작하는 프로토콜로, 데이터의 전달을 보증하고 보낸 순서대로 받게 해준다.</li>
+</ul>
+
+<p><img src="https://image.slidesharecdn.com/081-111113041506-phpapp01/95/08-1-3-728.jpg?cb=1321157739" alt=""></p>
+
+<p>[참고자료, <a href="https://image.slidesharecdn.com/081-111113041506-phpapp01/95/08-1-3-728.jpg?cb=1321157739">https://image.slidesharecdn.com/081-111113041506-phpapp01/95/08-1-3-728.jpg?cb=1321157739</a>]     </p></li>
+</ul>
+
+<h4 id="toc_10">2.2.2 IP 주소</h4>
+
+<ul>
+<li>컴퓨터 네트워크에서 <strong>IP(Internet Protocol) 주소</strong>는 전세계 컴퓨터에 부여된 <strong>고유의 식별 주소</strong>다</li>
+<li><strong>IPv4</strong> (IP version 4) 주소 체계
+
+<ul>
+<li>0~255 범위의 10진수 4개와 .(점)으로 표현하며, 실제로 32비트로 구성됨</li>
+<li>예, 211.102.111.012<br></li>
+</ul></li>
+<li><strong>IPv6</strong> (IP version 6) 주소 체계
+
+<ul>
+<li>IPv4의 주소 부족 문제 해결을 위해 제정됨</li>
+<li>128비트로 구성됨</li>
+<li>예, 3122:FFAB:1234:3120:1111:DCDD:2241:0099</li>
+</ul></li>
+</ul>
+
+<h4 id="toc_11">2.2.3 자동 IP (DHCP)와 고정 IP</h4>
+
+<ul>
+<li>IP 주소 할당 방식에 따라 고정 IP와 자동 IP로 구분됨
+
+<ul>
+<li><strong>고정 IP 주소</strong>
+
+<ul>
+<li>인터넷 서비스 업체의 의해서 할당된 IP 주소로서 항상 고정된 주소임</li>
+</ul></li>
+<li><strong>자동 IP 주소 (Dynamic Host Configuration Protocol, DHCP)</strong>
+
+<ul>
+<li>컴퓨터가 부팅될 때마다 DHCP 서버에 의해 할당된 IP 주소로서 유동적임.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h4 id="toc_12">2.2.4 게이트웨이</h4>
+
+<ul>
+<li>다른 네트워크로 들어가는 톨게이트 역할을 하는 네트워크 포인트</li>
+<li>외부 인터넷으로 나가기 위해서는 반드시 게이트웨이 설정이 필요함</li>
+<li>게이트웨이에도 중복되지 않는 IP 주소가 필요함
+
+<ul>
+<li>일반적으로 게이트웨어 IP 주소는 컴퓨터에 할당된 IP 주소 중 끝자리만 다른형태, 보통 1을 지정
+
+<ul>
+<li>예, 211.102.111.1</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h4 id="toc_13">2.2.5 DNS</h4>
+
+<ul>
+<li><p><strong>도메인 네임 시스템 (Domain Name System, DNS)</strong>는 사람이 이해하기 쉬운 도메인 이름을 숫자로 식별된 IP 주소로 변환해 줌</p>
+
+<p><img src="https://xvp.akamaized.net/assets/customer_tools/dns_leak/dns-explained-e6ae84db517c1ed9b9c7c82116a0de18.png" alt=""></p></li>
+</ul>
+
+<h3 id="toc_14">2.2.6 IP 주소 및 네트워크 정보를 확인하는 방법</h3>
+
+<ul>
+<li><p>운영체계가 MS 윈도우 라면,</p>
+
+<ol>
+<li>[<strong>시작</strong>]-[<strong>실행</strong>]에서 <em>cmd</em>를 입력</li>
+<li><strong>명령 프롬프트</strong> 창에서 <em>ipconfig /all</em> 명령을 입력하여 실행</li>
+</ol>
+
+<p><img src="http://www.conniq.com/FAQ/images/ipaddress-computer.gif" alt="">  </p></li>
+</ul>
+
+<hr>
+
+<p><a name="3"></a></p>
+
+<h2 id="toc_15">3. 근거리무선통신</h2>
+
+<h3 id="toc_16">3.1 WiFi</h3>
+
+<ul>
+<li>우리나라는 2.4㎓(2.400~2.483㎓) 대역에 83㎒ 주파수 대역 할당</li>
+<li>83㎒ 주파수 대역에 20/22㎒ 대역폭을 5㎒ 간격으로 13개 채널 할당</li>
+<li>같은 채널에 여러 대의 WiFi 기기가 사용되거나 WiFi 기기들이 인접한 채널 이용 시 서로 다른 기기 간 통신 시 간섭(Interference) 발생</li>
+<li><p>간섭 문제 해결을 위해 1, 6, 13번 채널 또는 1, 5, 9, 13번 채널처럼 서로 중첩되지 않는 채널들을 이용하도록 권장</p>
+
+<div class="polaroid">
+<img src="images/wifi_channel.png" >
+</div></li>
+<li><p>WiFi 이용 기기들의 폭발적인 증가로 인하여 간섭을 피하고자 비중첩 채널이 20개 이상인 5㎓ 대역 이용 증가 추세</p>
+
+<ul>
+<li>관련 표준: IEEE802.11n, IEEE 802.11ac 등</li>
+</ul>
+
+<div class="polaroid">
+<img src="images/wifi_channel2.png" >
+</div></li>
+</ul>
+
+<h3 id="toc_17">3.2 Bluetooth</h3>
+
+<ul>
+<li>10m 안팎의 초단거리에서 데이터나 음성, 영상 등 저전력 무선연결에 사용하는 무선기술</li>
+<li>1994년 스웨덴 Ericsson사에서 시작한 무선 기술 연구를 바탕으로 1998년
+노키아, IBM, 도시바, 인텔 등으로 구성된 Bluetooth SIG(Special Interest
+Group)를 통해 개발된 무선 기술 표준</li>
+<li>스마트폰, 노트북, PC주변장치, 이어폰 등 휴대용 기기에 이용</li>
+<li>Bluetooth 무선 시스템은 ISM 대역인 2,400~2,483.5㎒ 사용</li>
+<li>인접 주파수를 쓰는 다른 시스템들과의 간섭 방지를 위해 2,402~2,480㎒ 대역에서
+총 79개 채널 할당</li>
+<li>시스템 간 전파 간섭 방지를 위해 주파수 호핑(Frequency Hopping) 방식 사용
+
+<ul>
+<li>주파수 호핑이란 다수 채널을 특정 패턴에 따라 빠르게 이동시키며 패킷(데이터)을 조금씩 전송하는 기술</li>
+<li>할당된 79개 채널을 1초당 1,600번 호핑</li>
+<li>호핑 패턴이 Bluetooth 기기 간에 동기화되어야 통신 가능</li>
+<li>Bluetooth는 기기 간 마스터(Master)와 슬레이브(Slave)로 구성
+
+<ul>
+<li>하나의 마스터 기기에는 최대의 슬레이브 기기가</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3 id="toc_18">3.3 RFID(Radio Frequency Identification)</h3>
+
+<ul>
+<li>개요
+
+<ul>
+<li>RFID는 전자태그, 스마트 태그, 전자 라벨 및 무선식별 등으로도 지칭</li>
+<li>리더 장치가 전파를 방사하면 태그는 수신한 에너지를 이용하여 칩에 저장된 데이터
+를 리더로 변환하여 정보 전달</li>
+</ul></li>
+<li><p>RFID 구성요소</p>
+
+<ul>
+<li>RFID 태그</li>
+<li>안테나</li>
+<li>리더기</li>
+<li>호스트</li>
+<li>태그발행기</li>
+</ul>
+
+<div class="polaroid">
+<img src="images/rfid_elements.png" >
+</div></li>
+<li><p>RFID 주파수별 특징</p>
+
+<table>
+<thead>
+<tr>
+<th>주파수</th>
+<th>135 kHz 이하</th>
+<th>13.56 MHz</th>
+<th>433 MHz</th>
+<th>860~960 MHz</th>
+<th>2.45 GHz</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>주 응용분야</td>
+<td>보안, 동물관리</td>
+<td>교통카드, 도서관리</td>
+<td>컨테이너, 자동차</td>
+<td>유통, 물류</td>
+<td>여권, ID 카드</td>
+</tr>
+<tr>
+<td>능동/수동</td>
+<td>수동형</td>
+<td>수동형</td>
+<td>능동형</td>
+<td>수동형</td>
+<td>수동/능동형</td>
+</tr>
+<tr>
+<td>표준규격</td>
+<td>ISO 18000-2</td>
+<td>ISO 18000-3</td>
+<td>ISO 18000-7</td>
+<td>ISO 18000-6</td>
+<td>ISO 18000-4</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>RFID 동작절차</p>
+
+<ol>
+<li>칩과 안테나로 구성된 RFID 태그에 활용 목적에 맞는 정보 입력 및 대상에 부착</li>
+<li>게이트, 계산대, 톨게이트 등에 부착된 리더에서 안테나를 통해 RFID 태그를 향해
+무선 신호 송출</li>
+<li>태그는 신호에 반응하여 태그에 저장된 데이터 송출</li>
+<li>태그로부터의 신호를 수신한 안테나는 수신한 데이터를 디지털 신호로 변조하여
+리더로 전달</li>
+<li>리더는 데이터를 해독하여 호스트 컴퓨터로 전달</li>
+</ol>
+
+<div class="polaroid">
+<img src="images/rfid.png" >
+</div></li>
+</ul>
+
+<h3 id="toc_19">3.4 NFC(Near Field Communication)</h3>
+
+<ul>
+<li><p>개요</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8q9iISSRx7k? frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<ul>
+<li>2002년 일본 SONY사와 네덜란드 NXP 반도체가 공동 개발한 13.56 ㎒대역
+RFID 기술을 발전시킨 <strong>비접촉식 양방향 근접 통신</strong> 기술</li>
+<li>2004년 NFC Forum이 설립된 후 기술개발과 상용화 본격화, 스마트폰에
+NFC가 탑재되면서 대중화</li>
+<li>별도의 준비 없이 10㎝내의 근접거리 통신이 가능하여 보안 우수</li>
+<li>가격이 저렴하여 차세대 근거리 통신 기술로 주목</li>
+<li>Bluetooth나 ZigBee 등 경쟁기술에 비해 보안성과 편의성 우수</li>
+<li>데이터 읽기와 쓰기 기능을 모두 사용 가능</li>
+</ul></li>
+<li><p>NFC 동작모드</p>
+
+<ul>
+<li>Peer-to-Peer 모드
+
+<ul>
+<li>두 대의 NFC 디바이스가 상호 데이터 송수신 가능</li>
+<li>각각 독자적인 RF필드 생성으로 인해 전력소모가 큼</li>
+<li>예) 명함 교환, 개인송금 등에 응용</li>
+</ul></li>
+<li>Reader/Writer 모드
+
+<ul>
+<li>Reader모드는 휴대폰이 리더기의 역할을 수행하여 특정 태그로 부터 정보를 읽어 들이는 모드</li>
+<li>Writer모드는 필요한 정보를 태그에 기록하는 모드</li>
+<li>태그 인식을 위한 전력 필요</li>
+<li>예) <a href="https://blog.naver.com/tonylee9239/220324727237">스마트 NFC Writer 어플리케이션</a></li>
+</ul></li>
+<li>카드 애뮬레이션 (Card Emulation) 모드
+
+<ul>
+<li>기존 비접촉식 스마트 카드처럼 동작</li>
+<li>전력공급 불필요</li>
+<li>예) 신용카드, 교통카드, 신분증 등에 응용</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3 id="toc_20">3.5 ZigBee</h3>
+
+<ul>
+<li><p>개요</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6WYX1Z1vXAE?rel=0&amp;start=359&end=502" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></li>
+</ul>
+
+<!--
+    [![aa](https://ksassets.timeincuk.net/wp/uploads/sites/54/2015/01/zigbee-1-920x519.jpg)](https://youtu.be/6WYX1Z1vXAE?start=359&end=502)
+-->
+
+<p><a href="https://www.youtube.com/watch?v=6WYX1Z1vXAE&amp;feature=youtu.be&amp;t=359">https://www.youtube.com/watch?v=6WYX1Z1vXAE&amp;feature=youtu.be&amp;t=359</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=iquILj4CcaU">https://www.youtube.com/watch?v=iquILj4CcaU</a></p>
+
+<ul>
+<li>인터넷 전화 접속으로 홈 오토메이션을 편리하게 하기 위한 목적으로
+개발된 기술</li>
+<li>사물인터넷 디바이스 간 통신에 필요한 요구사항을 고려한 표준기술</li>
+<li><strong>소형·저전력·저비용·근거리통신</strong>을 위한 <a href="https://ko.wikipedia.org/wiki/IEEE_802.15.4">IEEE 802.15.4</a> 기반으로 구성</li>
+<li>모토로라, 하니웰 등이 중심이 되어 1998년부터 기술 개발 시작, 2002년
+ZigBee Allience 설립</li>
+<li>세계 대부분 지역에서 ISM 밴드인 2.4㎓ 대역 사용</li>
+<li><p>무선랜, Bluetooth 등 동일 주파수 대역을 사용하는 무선 기술과의 간섭
+회피 목적으로 일부 국가에서 868㎒(유럽), 915㎒(미국/호주) 대역 사용</p></li>
+<li><p>ZigBee 계층 구조</p>
+
+<ul>
+<li>ZigBee 장치는 물리(PHY) 계층, 매체 접속(MAC) 계층, 네트워크(Network)계층, 응용(Application) 계층으로 구분되는 프로토콜로 구성</li>
+<li>물리 계층 및 매체접속 제어 계층은 IEEE 제정 IEEE802.15.4 표준 채택</li>
+<li>ZigBee 네트워크와 응용 계층은 산업체 표준단체인 ZigBee 연합(ZigBee Alliance)을
+결성하여 표준 기술 제정</li>
+</ul>
+
+<div class="polaroid">
+ <img src="images/zigbee_architecture.png" >
+</div></li>
+<li><p>ZigBee 주요장치</p>
+
+<ul>
+<li>단말장치: 각종 센서에 연결되어 데이터 전송</li>
+<li>코디네이터 장치: 정보 수집 및 장치 제어</li>
+<li>라우터 장치: 여러 장치 간 데이터 전달</li>
+</ul></li>
+<li><p>ZigBee 네트워크 구조</p>
+
+<ul>
+<li>클러스터 트리(Tree) 구조</li>
+<li>스타(Star) 구조</li>
+<li>메시(Mesh) 구조의 다양한 토폴로지 지원</li>
+<li>네트워크 접속 가능 장치 수: 최대 65,000개</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_21">3.6 Z-Wave</h3>
+
+<ul>
+<li><p>개요</p>
+
+<ul>
+<li>ZenSys가 주축이 되어 2005년에 설립된 Z-Wave Alliance에서 개발한
+홈오토메이션 모니터링 및 컨트롤을 위한 저전력 통신 기술</li>
+<li>908.42㎒(미국) 및 주변 주파수 대역에서 동작</li>
+<li>ITU-T에서 sub 1㎓ 협대역 무선 디바이스를 위한 1,2계층 표준
+(G.9959)으로 등록</li>
+<li>국내는 2013년 12월 919.7㎒, 921.7㎒, 923.1㎒가 Z- Wave 용도로 승인</li>
+</ul>
+
+<p>주요 특징
+- 혼잡한 2.4㎓ 주파수 기반 통신기술에 비해 간섭이 없음
+- 9,600bps~100Kbps의 전송속도 제공
+- Z-Wave 기기들은 동일 네트워크에 위치한 다른 밴더 제품과의 호환성
+이 뛰어나며, 투과성이 좋아 30m 정도의 거리에서는 벽이 있어도 통신
+가능</p></li>
+<li><p>ZigBee와 Z-Wave 특성 비교</p></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>주파수</th>
+<th>전송속도</th>
+<th>거리</th>
+<th>주 응용분야</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ZigBee</td>
+<td>2.4GHz</td>
+<td>250Kbps</td>
+<td>10m</td>
+<td>스마트그리드, 원격검침, 스마트홈</td>
+</tr>
+<tr>
+<td>Z-Wave</td>
+<td>908.42MHz</td>
+<td>9.6/100Kbps</td>
+<td>30m</td>
+<td>스마트홈, 보안</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<p><a name="4"></a></p>
+
+<h2 id="toc_22">4. 저전력 장거리 통신 (LPWA: Low Power WIde Area) 기술</h2>
+
+<ul>
+<li>개요
+
+<ul>
+<li>가정용 IoT는 Bluetooth, WiFi 등 근거리무선통신을 활용해 서비스 제공 가능하나, IoT 서비스 범위 확대 시 근거리무선통신은 단거리 제공범위 한계 극복 필요</li>
+<li>LPWAN의 특징
+
+<ul>
+<li>사물인터넷은 특성 상 연결기기 수가 매우 많으므로 안정적으로 데이터를
+교환하면서 비용을 줄이는 통신망 구축이 매우 중요한 요소</li>
+<li>낮은 소비전력: 별도의 교체 비용 및 업무가 없거나 최소화되어야 함 </li>
+<li>전파가 넓게 또 깊이 침투할 수 있어야 함</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3 id="toc_23">4.1 Weightless 기술</h3>
+
+<ul>
+<li><strong>Weightless</strong>는 영국 캠브리지 주변의 <em>ARM</em>과 <em>Neul</em>,
+ <em>CSR(Cambridge Silicon Radio)</em> 등이 주축이 되어 만든 <strong>개방형 표준 기반의
+ <em>LPWAN</em> 기술 개발 표준 협의체</strong></li>
+<li><strong>LPWAN (Low Power Wide Area Network)</strong>를 위한 <strong>사물 간의 무선 통신 기술</strong>로도 일컫음</li>
+<li>주요 특징
+
+<ul>
+<li>커버리지: 도시지역-10km, 교외지역-30km</li>
+<li>넓은 범위와 침투성을 위해 비면허 주파수 대역대인 ISM 대역 사용
+
+<ul>
+<li>유럽: 868 MHz</li>
+<li>미국: 915 MMz </li>
+</ul></li>
+<li>저렴한 모듈가격(2달러 이하)와 낮은 운영 비용으로 서비스 제공할 수 있는 기반 제공<br></li>
+</ul></li>
+</ul>
+
+<h3 id="toc_24">4.2 SIGFOX</h3>
+
+<ul>
+<li>2009년 설립된 프랑스 <strong>기업</strong>으로 <strong>사물인터넷 네트워크의 효시</strong></li>
+<li><strong>UNB(Ultra Narrow Band)</strong> 기술 사용</li>
+<li>원거리에 배터리 교체없이 몇 년 간 사용할 수 있는 <strong>저전력 기반</strong>의 사물
+인터넷 네트워크 서비스 제공</li>
+<li>주파수 사용료가 없는 비면허 주파수 대역대인 ISM 대역 사용
+
+<ul>
+<li>유럽: 868 MHz</li>
+<li>미국: 902 MHz</li>
+</ul></li>
+<li>가장 먼저 사물인터넷 네트워크 서비스를 제공한 만큼 현재 <strong>가장 넓은 커버리지와 파트너 보유</strong></li>
+</ul>
+
+<h3 id="toc_25">4.3 LoRaWAN(Long Range Wide Area Network)</h3>
+
+<ul>
+<li>반도체 기업인 셈태크(SemTech)와 IBM 리서치가 개발한 <strong>LPWAN</strong> 기술</li>
+<li>매우 적은 전력을 사용하여 넓은 대역으로 데이터 분산을 통해 동시에
+송신이 가능한 <strong>직접 확산 스펙트럼 CDMA</strong> 기술 활용</li>
+<li><strong>UNB</strong>에 비해 전력 소모가 크지만 전파 간섭이 적음</li>
+<li>UNB와 마찬가지로 비허가 대역(ISM 밴드) 이용</li>
+<li><strong>커버리지</strong>: 최대 100km 까지, 도시지역-2km, 교외지역-15km </li>
+<li><strong>속도</strong>: 300bps ~ 100kbps</li>
+<li>많은 AP(Access Point)와 중계기(Repeater)가 필요 없어 구축비용 절감
+가능</li>
+<li><strong>LoRa Alliance</strong>가 결성되어 표준화 주도</li>
+<li>SKT가 2016년 7월 LoRa 기술을 채택하여 전국에 IoT 전용망 구축</li>
+</ul>
+
+<h3 id="toc_26">4.4 NB-IoT (NarrowBand-IoT, 협대역-IoT)</h3>
+
+<ul>
+<li><strong>NB-IoT</strong>는 좁은 대역을 이용해 <strong>150kbps 이하의 데이터 전송 속도</strong>와 <strong>8km
+이상의 장거리 서비스</strong>를 지원하는 협대역 사물인터넷 표준 기술</li>
+<li>KT와 LG U+는 NB-IoT 공동 기술 개발 협력을 통해 2017년 1/4분기에
+상용화하고 2017년 전국망 구축 완료</li>
+<li>비면허 주파수를 사용하는 LoRa와 달리 <strong>LTE 전국망을
+기반</strong>으로 커버리지가 넓고 안정적인 서비스 품질 제공에 유리한 기술</li>
+<li>접속 기술은 무선 채널들이 상당부분 중첩되지만 직교성(Orthogonality)
+이 있어 서로 중첩되어도 방해 없이 정보 전송 가능한 OFDM 방식 사용</li>
+<li>이 기술은 전력 소비가 적으면서 가스·수도·전기 검침, 위치 추적용 기기
+등과 같이 원거리에 있는 사물 간 통신에 적합</li>
+</ul>
+
+<h3 id="toc_27">4.5 LTE-MTC(Machine Type Communication)</h3>
+
+<ul>
+<li>국내 이동통신 3사는 LTE-M 기반의 IoT 네트워크 도입 예정</li>
+<li>LTE-M은 LTE-MTC(Machine Type Communication)로 <a href="http://www.3gpp.org/">3GPP</a>가 표준화한
+기술</li>
+<li>전국망이 구축되어 있는 LTE망을 이용하므로 전국 서비스가 가능</li>
+<li><strong>면허대역 주파수를 사용</strong>하므로 주파수 간섭으로 인한 품질 저하 없음</li>
+<li>로밍을 통한 글로벌 확장 가능</li>
+<li>LTE-M 최대 속도는 10Mbps</li>
+</ul>
+
+<h3 id="toc_28">4.6 LPWAN 기술 방식별 특징 비교</h3>
+
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>LTE-M</th>
+<th>NB-IoT</th>
+<th>SIGFOX</th>
+<th>LoRaWAN</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>커버리지</strong></td>
+<td>~11km</td>
+<td>8km~15km</td>
+<td>~10km(도시), ~30km(교외)</td>
+<td>~2km(도시), ~15km(교외)</td>
+</tr>
+<tr>
+<td><strong>주파수대역</strong></td>
+<td>면허대역(LTE)</td>
+<td>면허대역(LTE)</td>
+<td>비면허대역</td>
+<td>비면허대역</td>
+</tr>
+<tr>
+<td><strong>대역폭</strong></td>
+<td>20MHz</td>
+<td>200kHz</td>
+<td>200kHz</td>
+<td>~500kHz</td>
+</tr>
+<tr>
+<td><strong>통신속도</strong></td>
+<td>10Mbps</td>
+<td>~150Kbps</td>
+<td>1Kbps</td>
+<td>~100Kbps</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><p>IoT 네트워크 적용 기술 비교</p>
+
+<div class="polaroid">
+<img src="images/after2015.png" >
+</div></li>
+</ul>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
