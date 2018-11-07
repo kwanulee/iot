@@ -48,7 +48,7 @@ div.polaroid {
 - 네트워크 범위에 따른 분류
 	- **LAN (Local Area Network)**
 		- 집, 사무실, 학교, 대학 캠퍼스 등과 같이 소규모 공간 내의 컴퓨터들을 연결하는 근거리 통신망
-	- **WAN (Wide Area Network**
+	- **WAN (Wide Area Network)**
 		- 국가, 대륙 등과 같은 넓은 지역을 연결하는 원거리 통신망
 		- 다른 지역의 LAN이나 다른 종류의 네트워크를 연결하는 네트워크
 
@@ -253,12 +253,11 @@ div.polaroid {
 
 <!--
 	[![aa](https://ksassets.timeincuk.net/wp/uploads/sites/54/2015/01/zigbee-1-920x519.jpg)](https://youtu.be/6WYX1Z1vXAE?start=359&end=502)
--->
 
 https://www.youtube.com/watch?v=6WYX1Z1vXAE&feature=youtu.be&t=359
 
 https://www.youtube.com/watch?v=iquILj4CcaU
-
+-->
   - 인터넷 전화 접속으로 홈 오토메이션을 편리하게 하기 위한 목적으로
    개발된 기술
   - 사물인터넷 디바이스 간 통신에 필요한 요구사항을 고려한 표준기술
@@ -299,7 +298,7 @@ https://www.youtube.com/watch?v=iquILj4CcaU
      (G.9959)으로 등록
   - 국내는 2013년 12월 919.7㎒, 921.7㎒, 923.1㎒가 Z- Wave 용도로 승인
 
- 주요 특징
+- 주요 특징
   - 혼잡한 2.4㎓ 주파수 기반 통신기술에 비해 간섭이 없음
   - 9,600bps~100Kbps의 전송속도 제공
   - Z-Wave 기기들은 동일 네트워크에 위치한 다른 밴더 제품과의 호환성
