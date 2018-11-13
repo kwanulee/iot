@@ -175,7 +175,6 @@ div.polaroid {
    - 할당된 79개 채널을 1초당 1,600번 호핑
    - 호핑 패턴이 Bluetooth 기기 간에 동기화되어야 통신 가능
    - Bluetooth는 기기 간 마스터(Master)와 슬레이브(Slave)로 구성
-      - 하나의 마스터 기기에는 최대의 슬레이브 기기가
 
 ### 3.3 RFID(Radio Frequency Identification)
 - 개요
