@@ -76,7 +76,7 @@ div.polaroid {
 		</div>
 
 
-
+<a name="ex2"></a>
 ### 2.2 예제 2
 - 센서 값 모니터에서 확인하기
 	<div class="polaroid">
