@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>platform</title>
+
+
+<style type="text/css">
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+kbd {
+  display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style>
+div.polaroid {
+    width: 400px;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2), 0 16px 30px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin-bottom: 0.5cm;
+}
+</style>
+
+<h1 id="toc_0">사물인터넷 플랫폼</h1>
+
+<h2 id="toc_1">학습 목표</h2>
+
+<ul>
+<li>사물인터넷 플랫폼 기술의 용어와 개념을 이해한다.</li>
+<li>다양한 사물인터넷 플랫폼 제품의 사용을 실습한다.</li>
+</ul>
+
+<hr>
+
+<h2 id="toc_2">1. 개요</h2>
+
+<h3 id="toc_3">1.1 사물인터넷 서비스란</h3>
+
+<ul>
+<li><p><strong>사물인터넷(Internet of Things, 약어로 IoT)</strong>은 각종 사물에 센서와 통신 기능을 내장하여 인터넷에 연결하는 기술.</p></li>
+<li><p><strong>사물인터넷 서비스</strong>는 사물인터넷 기술을 활용하여 사용자에게 새로운 가치를 제공하는 기능</p>
+
+<ul>
+<li>사물들로부터 수집된 정보를 저장 및 모니터링
+
+<ul>
+<li><a href="https://youtu.be/iGRBWvrBuro?start=1171">사례1: 스마트 팜 시스템</a></li>
+</ul></li>
+<li>규칙 엔진 혹은 사용자에 의한 사물들의 원격 제어
+
+<ul>
+<li><a href="https://youtu.be/iGRBWvrBuro?start=527">사례2: 스마트 홈 시스템</a></li>
+</ul></li>
+<li>사물들로부터 수집된 정보를 분석 및 학습하여 지능화된 서비스 제공
+
+<ul>
+<li><a href="https://www.samsungsds.com/global/ko/about/news/cello-tech-fair-2018.html">사례3: 삼성SDS, AI기술로 지능화된 첼로 물류 플랫폼 공개</a> 
+<!--  - [사례3: Amazon AI 및 IoT](https://youtu.be/V4GidNmlHVA?t=248) --></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3 id="toc_4">1.2 <strong>사물인터넷  플랫폼이란?</strong></h3>
+
+<ul>
+<li>사물들로부터 데이터를 수집하거나 사물의 제어방법 제공, 사물기기 관리, 연결 기능 등을 제공하는 공통시스템</li>
+<li><p>플랫폼은 <strong>서버</strong>나 <strong>클라우드</strong> 형태로 제공됨</p>
+
+<div class="polaroid">
+     <img src="images/platform.png" >
+</div></li>
+</ul>
+
+<h4 id="toc_5">1.2.1 클라인트-서버 모델  [<a href="https://ko.wikipedia.org/wiki/%EC%84%9C%EB%B2%84">참고자료</a>]</h4>
+
+<ul>
+<li><strong>서버(영어: server)</strong>는 클라이언트에게 네트워크를 통해 정보나 서비스를 제공하는 컴퓨터(server computer) 또는 프로그램(server program)을 말한다.</li>
+<li><p>서비스를 요청하는 클라이언트와 클라이언트의 요청을 처리하는 서버와의 상호작용을 통해서 사용자가 원하는 결과를 얻는 처리방식이 <strong>클라이언트-서버</strong> 시스템이다.</p>
+
+<div class="polaroid">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Client-server-model.svg/1200px-Client-server-model.svg.png" >
+</div></li>
+</ul>
+
+<h4 id="toc_6">1.2.2 <strong>클라우드 서비스란?</strong></h4>
+
+<ul>
+<li><p><strong>클라우드 서비스</strong>란 인터넷 상에 컴퓨팅 자원(저장소, 애플리케이션, 컴퓨터, 네트워크 등)을 보관해 두고, 사용자가 필요한 자원을 인터넷 접속을 통해 언제 어디서나 이용할 수 있는 서비스를 말한다.</p></li>
+<li><p>클라우드 서비스 모델</p>
+
+<ul>
+<li><p><strong>SaaS (Software as a Service)</strong></p>
+
+<ul>
+<li>응용 프로그램을 웹서비스 형태로 제공</li>
+<li>예, Google Docs, Gmail, 등</li>
+</ul></li>
+<li><p><strong>Paas (Platform as a Service)</strong></p>
+
+<ul>
+<li>응용 프로그램 개발자를 위한 서비스로, 개발자들이 기반 인프라스트럭처에 대해 신경을 쓰지 않고 앱을 개발하고 테스트할 수 있는 환경을 제공</li>
+<li>예, Google Cloud Platform, Firebase, AWS IoT, 등</li>
+</ul></li>
+<li><p><strong>IaaS (Infrastructure as a Service)</strong></p>
+
+<ul>
+<li>컴퓨팅 파워, 스토리지, 네트워크 등을 서비스 형태로 제공</li>
+<li>예, AWS, Google Cloud, Azure, 등</li>
+</ul></li>
+</ul></li>
+<li><p>클라우드 서비스의 이점</p>
+
+<ul>
+<li>비용
+
+<ul>
+<li>초기 인프라 자원 투자에 대한 부담 감소</li>
+<li>데이터 센터 운영 및 유지 관리에 비용 투자 불필요</li>
+<li>사용한 양에 따른 비용 구조</li>
+</ul></li>
+<li>유연성
+
+<ul>
+<li>즉각적인 인프라 자원 확장</li>
+</ul></li>
+<li>개발 용이성
+
+<ul>
+<li>빠른 인프라 구축을 통한 개발 라이프사이클 단축</li>
+<li>다양한 형태의 서비스에 대한 솔루션 제공</li>
+</ul></li>
+</ul></li>
+<li><p>IoT 클라우드 서비스 구현</p>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=qI8fs26bXmE">AWS로 연결하는 사물인터넷의 세계</a></li>
+</ul></li>
+<li><p>오픈 IoT 클라우드 플랫폼 사례</p>
+
+<ul>
+<li><a href="https://sandbox.sktiot.com/">SKT ThingPlug 플랫폼</a>
+
+<ul>
+<li>[<strong>동영상</strong>] <a href="https://www.youtube.com/watch?v=ylBeyEm0VSk">SKT ThingPlug 플랫폼 소개</a></li>
+</ul></li>
+<li><a href="http://iotmakers.kt.com/openp/index.html#/introduce">KT IoTMakers 플랫폼</a>
+
+<ul>
+<li>[<strong>동영상</strong>]] <a href="https://www.youtube.com/watch?v=am-jWlzOnmc">KT 개방형 IoT 플랫폼 IoTMakers와 아두이노 간의 연동</a></li>
+</ul></li>
+<li><a href="https://www.youtube.com/watch?time_continue=90&amp;v=PrgJZpohSQA">달리웍스 Thing+ 플랫폼</a></li>
+</ul></li>
+</ul>
+
+<h2 id="toc_7"><a name="2"></a></h2>
+
+<h2 id="toc_8">2. ThingPlug 플랫폼 체험하기 [실습]</h2>
+
+<p>스마트폰의 센서(Gyro, Shake 센서)의 정보를 ThingPlug Platform 과 연결하여,
+IoT 서비스를 간접적으로 체험할 수 있는 기능입니다</p>
+
+<ol>
+<li><a href="https://sandbox.sktiot.com/">https://sandbox.sktiot.com/</a> 접속</li>
+<li>화면 중앙 위에 있는 [<strong>ThingPlug 소개</strong>] 클릭
+<div class="polaroid">
+     <img src="images/thingplug-intro.png" >
+</div></li>
+<li>왼쪽 메뉴 중에 [<strong>서비스 체험하기</strong>] 클릭
+<div class="polaroid">
+     <img src="images/thingplug-service.png" >
+</div></li>
+<li>[<strong>체험 시작하기</strong>] 클릭</li>
+<li><strong>디바이스 이름</strong>과 <strong>E-mail</strong>을 입력후 [<strong>링크 보내기</strong>] 클릭
+<div class="polaroid">
+     <img src="images/thingplug-info-reg.png" >
+</div></li>
+<li>스마트폰으로 전송된 <strong>Link</strong>를 클릭하여, ThingPlug Platform과 연결
+<div class="polaroid">
+     <img src="images/thingplug-link.png" >
+</div></li>
+<li>스마트폰을 회전시키거나 흔들어서 ThingPlug 플랫폼의 변화를 확인한다.
+<div class="polaroid">
+     <img src="images/thingplug-connection.png" >
+</div></li>
+</ol>
+
+<h2 id="toc_9"><a name="3"></a></h2>
+
+<h2 id="toc_10">3. KT IoTMakers 플랫폼 [실습]</h2>
+
+<h3 id="toc_11">3.1 회원가입</h3>
+
+<ol>
+<li><a href="http://iotmakers.kt.com/openp/index.html#/auth/join">http://iotmakers.kt.com/openp/index.html#/auth/join</a> 접속하여, 이용약관 및 개인정보 수집 및 이용에 동의한 후에, <strong>아이디</strong>, <strong>이름</strong>, <strong>비밀번호</strong>를 포함한 필수정보를 입력후에 회원가입을 진행</li>
+<li>회원가입 후, 등록된 아이디와 비밀번호로 <strong>login</strong></li>
+</ol>
+
+<h3 id="toc_12">3.2 디바이스 등록</h3>
+
+<ol>
+<li>[<strong>IoT 개발</strong>]-[<strong>나의 디바이스</strong>] 선택</li>
+<li>[<strong>디바이스 등록</strong>] 버튼 클릭</li>
+<li>디바이스 정보 등록
+
+<ul>
+<li>  <strong>디바이스명</strong>으로 <em>sample device</em> 입력 후, <strong>디바이스 등록</strong> 버튼 클릭</li>
+</ul></li>
+<li>나의 디바이스 목록에서 <strong>태그 스트림</strong> 및 <strong>이벤트</strong>를 등록할 디바이스를 선택
+
+<ol>
+<li><strong>Tag Stream</strong> 탭의 <strong>태그 스트림 생성</strong> 버튼 클릭</li>
+<li><strong>Tag Stream ID</strong>에 <em>temperature</em> 입력후, <strong>생성</strong> 버튼 클릭</li>
+<li><strong>Event</strong> 탭의 <strong>이벤트 생성</strong> 버튼 클릭</li>
+<li>이벤트 생성 조건 설정
+
+<ul>
+<li><strong>이벤트 이름</strong>: <em>비정상 온도</em></li>
+<li><strong>이벤트 발생조건</strong>: <em>temperature</em>, <em>&gt;</em>, <em>40</em> 설정</li>
+</ul></li>
+<li><strong>저장</strong> 버튼 클릭 </li>
+</ol></li>
+</ol>
+
+<h3 id="toc_13">3.3 가상 디바이스 시뮬레이터 등록</h3>
+
+<ol>
+<li>[<strong>IoT 개발</strong>]-[<strong>가상 디바이스 등록</strong>] 선택</li>
+<li><strong>시뮬레이터 등록</strong> 버튼 클릭</li>
+<li>가상 디바이스 등록 화면에서, 다음 정보 입력
+
+<ul>
+<li><strong>가상 디바이스 시뮬레이터 이름</strong>: <em>mySampeDeviceSIm</em> 입력</li>
+<li><strong>디바이스 이름</strong>: 생성된 디바이스 중에 하나(예, <em>sample device</em>) 선택</li>
+<li><strong>시작 시간 및 동작 시간</strong>: <em>현재시간</em> 과 <em>5분</em> 선택</li>
+<li><strong>데이터 생성 주기</strong>: <em>5초</em> 선택</li>
+</ul></li>
+<li><strong>Tag Stream 목록</strong>에서 <em>temparature</em>를 더블클릭 후, 시뮬레이션 조건 설정
+
+<ul>
+<li><strong>시작값</strong>: <em>19</em></li>
+<li><strong>조건</strong>: <em>증가</em></li>
+<li><em>변화값</em>*: <em>1</em></li>
+</ul></li>
+<li><strong>저장</strong> 버튼 클릭</li>
+</ol>
+
+<h3 id="toc_14">3.4 대시보드 꾸미기</h3>
+
+<ol>
+<li>[<strong>IoT 개발</strong>]-[<strong>나의 대시보드</strong>] 선택</li>
+<li><strong>+</strong> 버튼을 눌러 다양한 위젯 생성</li>
+<li><strong>디바이스 현황</strong> 위젯 선택 후, <strong>추가</strong> 버튼 클릭</li>
+<li><strong>설정</strong>(톱니바퀴 모양 아이콘)을 클릭 후, 왼쪽 <strong>디바이스 목록</strong>의 <em>sample device</em>를 <strong>보여줄 디바이스 목록</strong>으로 이동하고, <strong>저장</strong> 버튼 클릭 </li>
+<li><strong>실시간 태그 스트림 현황</strong> 위젯 선택 후, <strong>추가</strong> 버튼 클릭</li>
+<li><strong>디바이스 선택</strong>에서 <em>sample device</em>를, <strong>수집 태그스트림</strong>에서 temperature*를 선택 후, <strong>추가</strong> 클릭 후, <strong>저장</strong> 버튼 클릭</li>
+<li>필요에 따라 여러분의 대시보드를 꾸며보세요.</li>
+</ol>
+
+<h3 id="toc_15">3.5 이벤트 관리</h3>
+
+<ol>
+<li>[<strong>IoT 개발</strong>]-[<strong>이벤트 관리</strong>] 선택</li>
+<li> 발생된 이벤트 조회</li>
+</ol>
+
+<hr>
+
+<p><a name="4"></a></p>
+
+<h2 id="toc_16">4. Thing+ 플랫폼 [실습]</h2>
+
+<h3 id="toc_17">4.1. 회원가입</h3>
+
+<ol>
+<li><a href="https://thingplus.net">https://thingplus.net</a> 접속</li>
+<li>상단에 위치한 <strong>가입하기</strong> 버튼을 통해 회원가입 페이지로 이동합니다.</li>
+<li>개인 사용자 무료로 <strong>가입하기</strong>를 진행합니다.</li>
+<li>자신의 <em>이메일</em> 주소를 입력한후 <strong>회원가입</strong> 버튼을 클릭합니다.
+<div class="polaroid">
+     <img src="images/registration-email.png" >
+</div></li>
+<li>입력한 이메일 주소로 보내진 인증 메일을 확인하고 <strong>이메일 인증</strong> 버튼을 눌러 회원가입을 진행합니다.
+<div class="polaroid">
+     <img src="images/registration-email3.png" >
+</div></li>
+<li>아이디, 비밀번호, 비밀번호 재입력 란을 채운후, 이용약관의 동의를 체크하고 <strong>계정등록</strong>을 완료합니다.
+<div class="polaroid">
+     <img src="images/registration-id_pw.png" >
+</div></li>
+</ol>
+
+<h3 id="toc_18">4.2 게이트웨이 등록</h3>
+
+<p>Thing+와 연동된 하드웨어를 통해 누구나 쉽게 디바이스를 클라우드로 연결할 수 있습니다. 디바이스의 상태를 원격에서 관리할 수 있으며, 안정적인 연결과 보안 기능을 제공합니다.
+아직 보유한 게이트웨장비가 없다면, 가상 게이트웨이를 등록하실 수 있습니다.</p>
+
+<ol>
+<li>화면 우측 상단의 [<strong>설정</strong>]의 [<strong>게이트웨이 관리</strong>] 메뉴 선택
+<div class="polaroid">
+         <img src="http://support.thingplus.net/assets/gateway_management_ko.png" >
+</div></li>
+<li>화면 상단의 <strong>+</strong> 버튼으로 게이트웨이를 등록할 수 있습니다.
+<div class="polaroid">
+         <img src="http://support.thingplus.net/assets/register_gateway_ko.png" >
+</div> </li>
+<li>[가상 게이트웨이 등록] 게이트웨이 등록하기 화면에서 다음 정보 입력 후, <strong>[게이트웨어,디바이스,센서 등록 진행]</strong> 버튼 클릭
+
+<ul>
+<li>게이트웨이 모델 : <em>Virtual Gateway-Simulator</em> 선택</li>
+<li>게이트웨이 이름: <em>MySampleGateway</em> 입력</li>
+<li>디바이스 모델: <em>Air Environment</em> 선택</li>
+<li>디바이스 이름: <em>MySampleDevice</em> 입력<br></li>
+</ul></li>
+<li>화면 우측 상단의 [<strong>설정</strong>]의 [<strong>게이트웨이 관리</strong>] 메뉴 선택하여, 새로이 생성된 게이트웨어 확인</li>
+</ol>
+
+<h3 id="toc_19">4.3 대시보드 꾸미기</h3>
+
+<p>Thing+의 다양한 위젯을 기반으로 자신만의 맞춤형 대시보드를 꾸밀 수 있습니다. 언제 어디서나 실시간 모니터링이 가능하며, PC, 태블릿, 모바일 등 모든 클라이언트 환경을 지원합니다.</p>
+
+<ol>
+<li>화면 상단의 [<strong>대시보드</strong>] 메뉴 선택</li>
+<li>화면 상단의 <strong>+</strong> 버튼으로 다양한 위젯을 추가할 수 있습니다. </li>
+<li><p><strong>게이트웨이</strong> 위젯 추가하기</p>
+
+<ol>
+<li>화면 상단의 위젯 메뉴중에 [<strong>게이트웨이</strong>] 클릭</li>
+<li><p>추가된 위젯에서 [<strong>게이트웨이</strong>] 버튼 클릭 후에, 위젯 설정 화면에서 <strong>MySampleGateway</strong> 선택</p>
+
+<div class="polaroid">
+     <img src="images/gateway1.png" >
+</div></li>
+</ol></li>
+<li><p><strong>센서</strong> 위젯 추가하기</p>
+
+<ol>
+<li>화면 상단의 위젯 메뉴중에 [<strong>센서</strong>] 클릭</li>
+<li>추가된 위젯에서 [<strong>센서</strong>] 버튼 클릭 후에, 위젯 설정 화면에서 모니터링하고자 원하는 게이트웨이와 센서를 선택후 [<strong>저장</strong>] 버튼 클릭
+<div class="polaroid">
+     <img src="images/sensor.png" >
+</div></li>
+</ol></li>
+<li><p>유사한 방법으로 자신만의 대시보드를 꾸며 봅니다.</p></li>
+</ol>
+
+<h3 id="toc_20">4.4 규칙 설정하기</h3>
+
+<p><q>트리거 - 컨디션 - 액션</q> 모델을 기반으로 다양한 규칙 설정 기능을 제공합니다. 조건에 따른 이벤트 발생 등의 간단한 규칙부터 날씨와 같은 외부 환경 변수를 포함한 복합 규칙도 설정할 수 있습니다.</p>
+
+<ol>
+<li>화면 우측 상단의 [<strong>설정</strong>]의 [<strong>규칙 관리</strong>] 메뉴 선택</li>
+<li>화면 상단의 <strong>+</strong> 버튼으로 새로운 규칙을 생성할 수 있습니다. </li>
+<li><strong>템플릿 사용</strong> 메뉴 선택</li>
+<li><strong>온도 이상 감지</strong> 위젯의 <strong>+</strong> 버튼 클릭</li>
+<li>규칙만들기 화면에서 <strong>센서 목록</strong>의 체크박스 선택후, <strong>시작값</strong>과 <strong>끝 값</strong>을 설정하고, <strong>이메일 제목</strong>을 입력 후에, <strong>저장</strong>버튼 클릭</li>
+</ol>
+
+<h3 id="toc_21">4.5 타임라인 살펴보기</h3>
+
+<p>설정한 규칙에 의해 발생하는 모든 이벤트를 트위터와 같은 타임라인 형태로 제공합니다. 단계(심각/경고/정보)를 지정할 수 있으며, 규칙 및 디바이스 별로 발생한 타임라인을 분류해서 확인할 수 있습니다.</p>
+
+<ol>
+<li>화면 상단의 [<strong>대시보드</strong>] 메뉴 선택</li>
+<li>화면 상단의 위젯 메뉴 중에서 [<strong>타입라인</strong>] 선택 </li>
+</ol>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>

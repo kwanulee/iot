@@ -25,16 +25,16 @@
 - 아두이노로 모터 제어 (실습)
 -->
 
-## 6. 네트워킹 기술
+## 3. 네트워킹 기술
 - [사물인터넷 네트워크 (이론)](https://kwanulee.github.io/iot/docs/network/iot_network.html)
 - [아두이노 시리얼통신 (실습)](https://kwanulee.github.io/iot/docs/serial/serial.html)
 - [아두이노 블루투스 통신 (실습)](https://kwanulee.github.io/iot/docs/bluetooth/bluetooth.html)
 - [아두이노 와이파이 통신 (실습)](https://kwanulee.github.io/iot/docs/internet/internet.html#practice)
 - [웹과 아두이노 (이론 및 실습)](https://kwanulee.github.io/iot/docs/internet/web_arduino.html)
 
-## 8. 클라우드 서비스 플랫폼 기술 
-- 클라우드 서비스 플랫폼 개요 (이론)
-- 아두이노와 클라우드 서비스 플랫폼 연결 (실습)
+## 4. 클라우드 서비스 플랫폼 기술 
+- [사물인터넷 플랫폼 (이론/실습)](https://kwanulee.github.io/iot/docs/platform/platform.html)
+- 사물인터넷과 클라우드, 빅데이터 및 모바일 융합 기술 (이론)
 
 <!--
 - 아두이노, 앱인벤터, 클라우드 서비스 플랫폼 연동 (실습)
