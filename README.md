@@ -34,7 +34,7 @@
 
 ## 4. 클라우드 서비스 플랫폼 기술 
 - [사물인터넷 플랫폼 (이론/실습)](https://kwanulee.github.io/iot/docs/platform/platform.html)
-- 사물인터넷과 클라우드, 빅데이터 및 모바일 융합 기술 (이론)
+- [사물인터넷과 빅데이터 및 인공지능 융합 기술 (이론)](https://kwanulee.github.io/iot/docs/bigdata_ai/bigdata_ai.html)
 
 <!--
 - 아두이노, 앱인벤터, 클라우드 서비스 플랫폼 연동 (실습)
