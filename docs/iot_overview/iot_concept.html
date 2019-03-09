@@ -106,16 +106,16 @@ kbd {
 
 <style type="text/css">
 /**
- * prism.js Dark theme for JavaScript, CSS and HTML
- * Based on the slides of the talk “/Reg(exp){2}lained/”
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
  * @author Lea Verou
  */
 
 code[class*="language-"],
 pre[class*="language-"] {
-	color: white;
+	color: black;
 	background: none;
-	text-shadow: 0 -.1em .2em black;
+	text-shadow: 0 1px white;
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	text-align: left;
 	white-space: pre;
@@ -134,6 +134,18 @@ pre[class*="language-"] {
 	hyphens: none;
 }
 
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
 @media print {
 	code[class*="language-"],
 	pre[class*="language-"] {
@@ -141,27 +153,22 @@ pre[class*="language-"] {
 	}
 }
 
-pre[class*="language-"],
-:not(pre) > code[class*="language-"] {
-	background: hsl(30, 20%, 25%);
-}
-
 /* Code blocks */
 pre[class*="language-"] {
 	padding: 1em;
 	margin: .5em 0;
 	overflow: auto;
-	border: .3em solid hsl(30, 20%, 40%);
-	border-radius: .5em;
-	box-shadow: 1px 1px .5em black inset;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
 }
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-	padding: .15em .2em .05em;
+	padding: .1em;
 	border-radius: .3em;
-	border: .13em solid hsl(30, 20%, 40%);
-	box-shadow: 1px 1px .3em -.1em black inset;
 	white-space: normal;
 }
 
@@ -169,11 +176,11 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: hsl(30, 20%, 50%);
+	color: slategray;
 }
 
 .token.punctuation {
-	opacity: .7;
+	color: #999;
 }
 
 .namespace {
@@ -185,8 +192,9 @@ pre[class*="language-"] {
 .token.boolean,
 .token.number,
 .token.constant,
-.token.symbol {
-	color: hsl(350, 40%, 70%);
+.token.symbol,
+.token.deleted {
+	color: #905;
 }
 
 .token.selector,
@@ -195,26 +203,31 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: hsl(75, 70%, 60%);
+	color: #690;
 }
 
 .token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string,
-.token.variable {
-	color: hsl(40, 90%, 60%);
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-	color: hsl(350, 40%, 70%);
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
 }
 
 .token.regex,
-.token.important {
+.token.important,
+.token.variable {
 	color: #e90;
 }
 
@@ -228,10 +241,6 @@ pre[class*="language-"] {
 
 .token.entity {
 	cursor: help;
-}
-
-.token.deleted {
-	color: red;
 }
 </style>
 
@@ -255,18 +264,45 @@ pre[class*="language-"] {
 
 <p><a href="https://youtu.be/iGRBWvrBuro?start=15&amp;end=400"><img src="https://img.youtube.com/vi/iGRBWvrBuro/0.jpg" alt="aa"></a></p>
 
+<h3 id="toc_2">1.1 사물인터넷이란?</h3>
+
 <ul>
-<li>사물인터넷은 다양한 사물들을 센서와 통신기술을 더해 사물과 사물, 사물과 사람을 연결함으로써 정보를 주고 받으며 새로운 가치를 만드는 것입니다.</li>
+<li>사물인터넷의 단어적 의미는 사물들(things)이 서로 연결된 인터넷 환경을 말함.</li>
+<li>사물인터넷의 본질은 <strong>다양한 사물들을 센서와 통신기술을 더해 사물과 사물, 사물과 사람을 연결함으로써 정보를 주고 받으며 새로운 가치를 만드는 것</strong>임. 즉, 기본의 개별적인 사물이 제공하지 못했던 새로운 서비스를 제공해주는 데 의의가 있음.
+
+<ul>
+<li>스마트 홈: 침대에서 사람이 잠들면 집안에 켜진 전등을 끄고, 잠에서 깨면 창문을 열어 환기를 하고, 커피를 자동으로 내려줌</li>
+</ul></li>
 </ul>
+
+<h3 id="toc_3">1.2 사물인터넷 역사</h3>
+
+<ul>
+<li>사물인터넷(Internet of Things)이라는 용어의 탄생은 1999년에 비누, 샴푸, 칫솔 등 다양한 종류의 소비재를 제조 및 판매했던 P&amp;G에서 브랜드 매니저로 근무하던 캐빈 애시턴(Kevin Ashton)이 이 용어를 처음으로 사용</li>
+<li>사물인터넷의 개념은 RFID뿐만 아니라 다양한 센서 및 통신기술들과 결합하며 발전해 나가기 시작
+
+<ul>
+<li><strong>WSE(Wireless Sensor Network)</strong>: 무선 센서 네트워크는 근거리 무선 통신 기능을 포함하고 있는 소형의 센서 장치들이 결합하여 산불 감시, 하천 범람, 건물 내 온도 분포 등 특정 장소의 상태 및 환경 변화 정보를 종합적으로 수집하여 관리하기 위한 기술</li>
+<li><strong>M2M(Machine-to-Machine)</strong>: 이동통신 기술을 이용하여 멀리 떨어져 있는 기계장치와 기계장치를 연결함으로써 효율적으로 장치를 운용하는 기술
+
+<ul>
+<li>병원에서는 응급상황, 환자의 상태모니터링, 의학 데이터 등을 연결하여 건강관리 시스템을 구축
+<img src="https://dbscthumb-phinf.pstatic.net/4410_000_1/20160427154701794_R5SRK9PW3.jpg/s_sm1_4_i4.jpg?type=w492_fst_n&amp;wm=Y" alt=""></li>
+</ul></li>
+</ul></li>
+<li>이후 다양한 센서장치와 디바이스를 결합함으로써 새로운 사용자 가치를 창출하려는 시도가 나타나면서, 소비자 유통, 헬스케어, 스마트홈 등 다양한 분야에서 사물인터넷 시대가 본격화되기 시작됨<br></li>
+</ul>
+
+<p>참고자료: <a href="https://terms.naver.com/entry.nhn?docId=3386811&amp;cid=58369&amp;categoryId=58369&amp;expCategoryId=58369">https://terms.naver.com/entry.nhn?docId=3386811&amp;cid=58369&amp;categoryId=58369&amp;expCategoryId=58369</a></p>
 
 <!--
 - 사물인터넷 사례
     - 버스 안내시스템
-    - 다양한 사물인터넷 제품들: 조명 제어, 
+    - 다양한 사물인터넷 제품들: 조명 제어,
     - 작업자 안전관리 시스템
     - HIS: 조명 제어, 침입자 감지, 누수감지
     - IoT 기반 출입문 통제 시스템
-    - 검체 위치추적및 상태 모니터링 
+    - 검체 위치추적및 상태 모니터링
 - IoT 혁신센터 - 스타트업을 위한 전문 프로그램
     - 스마트 팜 시스템
         - 충북 4개의 축산농가에 보급
@@ -279,12 +315,12 @@ pre[class*="language-"] {
         - 스마트 가로등 시스템
 - 사물인터넷의 주요 분야별 비율
     ![](images/iot_category_ratio.png)
-    
+
 - 사물인터넷에서의 해결해야할 과제
-    - 개인정보 유출/보호 
+    - 개인정보 유출/보호
 -->
 
-<h3 id="toc_2">사물인터넷에서 사물이란?</h3>
+<h3 id="toc_4">1.2 사물인터넷에서 사물이란?</h3>
 
 <ul>
 <li>네트워크에 연결된 사용자 단말이나 다양한 형태의 장치</li>
@@ -293,7 +329,7 @@ pre[class*="language-"] {
 <ul>
 <li>스마트폰이나 태블릿과 같은 모바일 기기</li>
 <li>안경이나 시계 같은 착용형 기기</li>
-<li>자동차, 로봇, 드론 </li>
+<li>자동차, 로봇, 드론</li>
 <li>TV, 냉장고와 같은 가전제품</li>
 <li>폐쇄 회로 텔레비전(Closed Circuit Television, CCTV) 등</li>
 </ul></li>
@@ -308,7 +344,7 @@ pre[class*="language-"] {
 <li><p>사물들은 자율적으로 동작하면서 필요한 정보를 공유</p></li>
 </ul>
 
-<h3 id="toc_3">사물인터넷의 개념적 변화과정</h3>
+<h3 id="toc_5">사물인터넷의 개념적 변화과정</h3>
 
 <ul>
 <li><p>사물 통신의 개념이 사물인터넷에 흡수되어 차세대 지능통신으로 발전</p>
@@ -316,7 +352,7 @@ pre[class*="language-"] {
 <p><img src="images/iot_concept_change.png" alt=""></p></li>
 </ul>
 
-<h3 id="toc_4">사물인터넷의 발전단계</h3>
+<h3 id="toc_6">사물인터넷의 발전단계</h3>
 
 <p><img src="images/iot_evolution.png" alt="">
   출처: IBM GTO 2014 - IoT 3.0, <a href="http://klabcamss.blogspot.kr/2014/08/iot-30.html">http://klabcamss.blogspot.kr/2014/08/iot-30.html</a></p>
@@ -357,9 +393,9 @@ pre[class*="language-"] {
 </ul></li>
 </ul>
 
-<h2 id="toc_5">2. 사물인터넷 기반 기술</h2>
+<h2 id="toc_7">2. 사물인터넷 기반 기술</h2>
 
-<h3 id="toc_6">센싱 기술</h3>
+<h3 id="toc_8">센싱 기술</h3>
 
 <ul>
 <li>사물과 주위 환경에서 정보를 얻기 위한 기술</li>
@@ -372,7 +408,7 @@ pre[class*="language-"] {
 </ul></li>
 </ul>
 
-<h3 id="toc_7">통신 및 네트워킹 기술</h3>
+<h3 id="toc_9">통신 및 네트워킹 기술</h3>
 
 <ul>
 <li>인간-사물-서비스를 연결하는 데 필요</li>
@@ -386,19 +422,19 @@ pre[class*="language-"] {
 <li>IP를 사용하지 않는 기기 간 통신
 
 <ul>
-<li>USB(Universal Serial Bus) </li>
+<li>USB(Universal Serial Bus)</li>
 <li><a href="https://ko.wikipedia.org/wiki/%EB%B8%94%EB%A3%A8%ED%88%AC%EC%8A%A4">블루투스(Bluetooth)</a></li>
 <li><a href="https://ko.wikipedia.org/wiki/%EC%A7%81%EB%B9%84">지그비(ZigBee)</a></li>
 <li><a href="https://ko.wikipedia.org/wiki/RFID">전파 식별(Radio Frequency IDentification, RFID)</a>
 
 <ul>
-<li><a href="https://www.youtube.com/watch?v=_WLbp91r8Ro">RFID 활용 사례</a> </li>
+<li><a href="https://www.youtube.com/watch?v=_WLbp91r8Ro">RFID 활용 사례</a></li>
 </ul></li>
 <li><a href="https://ko.wikipedia.org/wiki/%EA%B7%BC%EA%B1%B0%EB%A6%AC_%EB%AC%B4%EC%84%A0_%ED%86%B5%EC%8B%A0">근거리 무선 통신(Near Field Communication, NFC)</a> 등</li>
 </ul></li>
 </ul>
 
-<h3 id="toc_8">서비스 인터페이스 기술</h3>
+<h3 id="toc_10">서비스 인터페이스 기술</h3>
 
 <ul>
 <li>사물인터넷 주요 구성요소(사람·사물·서비스)를 통해 <strong>특정 기능을 수행하는 응용 서비스와 연동하는 역할</strong>
@@ -406,10 +442,10 @@ pre[class*="language-"] {
 <ul>
 <li>즉, 단순한 네트워크 인터페이스 개념이라기 보다는 사물인터넷 망을 통해 정보를 센싱, 처리 및 변환, 저장, 검색, 판단 등 다양한 서비스를 제공하는 인터페이스 역할을 수행</li>
 </ul></li>
-<li>개방형 웹 아키텍쳐인 REST가 가장 대표적으로 사용됨 </li>
+<li>개방형 웹 아키텍쳐인 REST가 가장 대표적으로 사용됨</li>
 </ul>
 
-<h3 id="toc_9">사물인터넷과 클라우드, 빅데이터, 인공지능 기술</h3>
+<h3 id="toc_11">사물인터넷과 클라우드, 빅데이터, 인공지능 기술</h3>
 
 <ul>
 <li> <strong>빅데이터</strong>
@@ -434,9 +470,9 @@ pre[class*="language-"] {
 
 <hr>
 
-<h2 id="toc_10">3. 사물인터넷의 특징 및 이슈</h2>
+<h2 id="toc_12">3. 사물인터넷의 특징 및 이슈</h2>
 
-<h3 id="toc_11">사물인터넷의 특징</h3>
+<h3 id="toc_13">사물인터넷의 특징</h3>
 
 <ul>
 <li><p>기술적인 특징</p>
@@ -453,7 +489,7 @@ pre[class*="language-"] {
 <li>사물 인터넷은 높은 이동성(Mobility)으로 인해 네트워크 토폴로지(Topology)가 동적
 
 <ul>
-<li>수많은 기기들이 수시로 재연결 요청과 함게 인증을 요청하므로, 사물인터넷 환경은 크게 구성될수록 유연하고 확장성을 가져야 함 </li>
+<li>수많은 기기들이 수시로 재연결 요청과 함게 인증을 요청하므로, 사물인터넷 환경은 크게 구성될수록 유연하고 확장성을 가져야 함</li>
 </ul></li>
 </ul></li>
 <li><p>시장의 특징</p>
@@ -474,12 +510,12 @@ pre[class*="language-"] {
 <ul>
 <li>PC 시대 플랫폼: 인털+윈도우</li>
 <li>모바일 시대 플랫폼: 안드로이드, IOS</li>
-<li>사물인터넷 시대 플랫폼: ?? </li>
+<li>사물인터넷 시대 플랫폼: ??</li>
 </ul></li>
 </ul></li>
 </ul>
 
-<h3 id="toc_12">사물인터넷의 이슈</h3>
+<h3 id="toc_14">사물인터넷의 이슈</h3>
 
 <ul>
 <li>보안 및 사생활의 침해 위협
@@ -533,7 +569,7 @@ pre[class*="language-"] {
 </table></li>
 </ul>
 
-<h2 id="toc_13">참고자료</h2>
+<h2 id="toc_15">참고자료</h2>
 
 <ul>
 <li>양순옥, 김성석, <q>4차 산업혁명을 견인하는 다이버전스 기술, 사물인터넷 (IoT)</q>, 생능출판사, 2018.</li>
