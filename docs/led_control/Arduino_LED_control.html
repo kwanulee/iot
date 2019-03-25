@@ -383,9 +383,46 @@ void loop() {
 }</code></pre></div></li>
 </ul>
 
+<h4 id="toc_8">1.5 매크로 사용하기</h4>
+
+<ul>
+<li><p><strong>#define</strong>은 특정 값에 이름을 붙일 수 있는 매크로 정의 구문이다.</p>
+
+<ul>
+<li><p>사용 방법</p>
+
+<div><pre><code class="language-c">#define 매크로이름 값</code></pre></div></li>
+</ul></li>
+<li><p>앞의 변수 사용 예제를 아래와 같이 <strong>#define</strong> 문을 이용하여 변경할 수 있다.</p>
+
+<div><pre><code class="language-c">/*
+#define 매크로를 사용하여 디지털 핀 출력과 지연 시간을 설정
+*/ 
+
+#define k 10
+#define dTime 500
+
+void setup() {
+    pinMode(k,OUTPUT);    
+}
+
+void loop() {
+    digitalWrite(k,HIGH);
+    delay(dTime);
+    digitalWrite(k,LOW);
+    delay(dTime);
+}</code></pre></div></li>
+<li><p><strong>변수사용과의 차이점</strong></p>
+
+<ul>
+<li>매크로를 사용하면 프로그램 컴파일 전에 전처리기를 거쳐 내부적으로 소스코드가 일괄 변환됩니다. </li>
+<li>변수를 사용하게되면 프로그램 실행 시에 변수를 위한 저장공간을 따로 마련하게 되고, 변수의 값을 프로그램 실행 중에 다른 값으로 변경할 수 있습니다. </li>
+</ul></li>
+</ul>
+
 <hr>
 
-<h3 id="toc_8">2. 함수 만들기</h3>
+<h3 id="toc_9">2. 함수 만들기</h3>
 
 <ul>
 <li>프로그램에서 반복적으로 사용되는 부분을 함수로 만들어 사용</li>
@@ -393,7 +430,7 @@ void loop() {
 
 <p><a name="2.1"> </a></p>
 
-<h4 id="toc_9">2.1 하드웨어 구성</h4>
+<h4 id="toc_10">2.1 하드웨어 구성</h4>
 
 <ul>
 <li><p>디지털입출력 핀 4개를 사용하여 LED 4개를 연결</p>
@@ -404,7 +441,7 @@ void loop() {
 </div></li>
 </ul>
 
-<h4 id="toc_10">2.2 함수 사용전 코드</h4>
+<h4 id="toc_11">2.2 함수 사용전 코드</h4>
 
 <ul>
 <li><p>DigitalPin 8~11에 연결된 LED를 1초씩 번갈아가면서 켜고 끄는코드</p>
@@ -448,14 +485,21 @@ void loop() {
 </ul></li>
 </ul>
 
-<h4 id="toc_11">2.3 함수</h4>
+<h4 id="toc_12">2.3 함수</h4>
 
 <ul>
 <li><p>모듈화된 코드 블록</p>
 
 <ul>
-<li>형식: <em>반환타입</em> <em>함수이름</em>(<em>파라미터</em>,...)</li>
-<li><p>예: <strong>int myMultiplyFunction(int x, int y)</strong></p>
+<li><p>형식 </p>
+
+<div><pre><code class="language-none">반환타입 함수이름(파라미터,...)</code></pre></div></li>
+<li><p>예</p>
+
+<ul>
+<li><strong>void setup()</strong></li>
+<li><strong>int myMultiplyFunction(int x, int y)</strong></li>
+</ul>
 
 <div class="polaroid">
 <img src="https://www.arduino.cc/en/uploads/Reference/FuncAnatomy.png"> 
@@ -464,7 +508,7 @@ void loop() {
 <li><p>참고자료: <a href="https://www.arduino.cc/en/Reference/FunctionDeclaration">https://www.arduino.cc/en/Reference/FunctionDeclaration</a></p></li>
 </ul>
 
-<h4 id="toc_12">2.4 함수 사용 예제</h4>
+<h4 id="toc_13">2.4 함수 사용 예제</h4>
 
 <ol>
 <li>공통적으로 반복되는 부분을 <strong>함수</strong>로 정의
@@ -508,9 +552,9 @@ void blink_ft(int pin) { // 디지털입출력 핀 pin번을 1초 간격으로 o
 }</code></pre></div></li>
 </ul>
 
-<h3 id="toc_13">3. FOR 문 활용하기</h3>
+<h3 id="toc_14">3. FOR 문 활용하기</h3>
 
-<h4 id="toc_14">3.1 앞 예제의 문제점</h4>
+<h4 id="toc_15">3.1 앞 예제의 문제점</h4>
 
 <ul>
 <li><p>같은 구조의 스케치가 반복적으로 사용됨</p>
@@ -530,7 +574,7 @@ void loop() {
 }</code></pre></div></li>
 </ul>
 
-<h4 id="toc_15">3.2 for 문</h4>
+<h4 id="toc_16">3.2 for 문</h4>
 
 <ul>
 <li><p>for 문은 초기값을 증가(또는 감소) 시키면서 조건이 만족하는 동안 지정된 블록의 코드를 반복하는 명령문</p>
@@ -540,7 +584,7 @@ void loop() {
  </div></li>
 </ul>
 
-<h4 id="toc_16">3.3 for 문 적용 예제</h4>
+<h4 id="toc_17">3.3 for 문 적용 예제</h4>
 
 <div><pre><code class="language-c">/*
   for 문과  함수를 사용하여 4개의 LED를 순차적으로 깜박이기
@@ -568,9 +612,9 @@ void blink_ft(int pin) { // 디지털입출력 핀 pin번을 1초 간격으로 o
 
 <hr>
 
-<h3 id="toc_17">4. Array 문 활용하기</h3>
+<h3 id="toc_18">4. Array 문 활용하기</h3>
 
-<h4 id="toc_18">4.1 앞 예제의 문제점</h4>
+<h4 id="toc_19">4.1 앞 예제의 문제점</h4>
 
 <ul>
 <li><p>for문의 인텍스 변수 k가 디지털입출력 핀의 번호를 직접 나타냄</p>
@@ -590,7 +634,7 @@ void setup() {
 </ul></li>
 </ul>
 
-<h4 id="toc_19">4.2 배열 (Array)</h4>
+<h4 id="toc_20">4.2 배열 (Array)</h4>
 
 <ul>
 <li><p>배열은 여러 개의 변수를 묶어서 하나의 이름을 부여하고, 배열 내의 각 변수를 번호(인덱스)를 통해 접근</p>
@@ -600,7 +644,7 @@ void setup() {
  </div></li>
 </ul>
 
-<h4 id="toc_20">4.3 배열문 적용 예제</h4>
+<h4 id="toc_21">4.3 배열문 적용 예제</h4>
 
 <ul>
 <li>배열과 for문을 사용
@@ -639,15 +683,15 @@ void blink_ft(int pin) { // 디지털입출력 핀 pin번을 1초 간격으로 o
 
 <hr>
 
-<h3 id="toc_21">5. 실습 과제</h3>
+<h3 id="toc_22">5. 실습 과제</h3>
 
-<h4 id="toc_22">하드웨어 구성</h4>
+<h4 id="toc_23">하드웨어 구성</h4>
 
 <ul>
 <li><a href="#2.1">2.1 하드웨어 구성</a>과 동일</li>
 </ul>
 
-<h4 id="toc_23">기본 시작 코드</h4>
+<h4 id="toc_24">기본 시작 코드</h4>
 
 <div><pre><code class="language-c">int pinLED[] = {6,9,11,12};
 int k;
@@ -662,7 +706,7 @@ void loop() {
    // 이 부분에 코드를 추가 하세요. 
 }</code></pre></div>
 
-<h4 id="toc_24">과제 세부 내용</h4>
+<h4 id="toc_25">과제 세부 내용</h4>
 
 <ul>
 <li><p>앞에서 제시된 <em>기본 시작 코드</em>를 바탕으로 다음 4 개의 문제를 각각 구현하시오.</p></li>
@@ -690,7 +734,7 @@ void loop() {
 
 <p><a name="exercise"></a></p>
 
-<h3 id="toc_25">6. 연습 과제</h3>
+<h3 id="toc_26">6. 연습 과제</h3>
 
 <ol>
 <li><p>4개의 LED가 다음 그림과 같이 2개씩 번갈아가며 on/off 되는 스케치를 작성하여 보자</p>

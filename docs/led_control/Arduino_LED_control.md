@@ -88,7 +88,25 @@ div.polaroid {
 	```c
 	/* 	변수를 사용하여 디지털 핀 출력과 지연 시간을 설정	*/ 	int k=10;	int dTime=500;	void setup() {  		pinMode(k,OUTPUT);    	}	void loop() {  		digitalWrite(k,HIGH);  		delay(dTime);  		digitalWrite(k,LOW);  		delay(dTime);	}
 	```
+
+#### 1.5 매크로 사용하기
+- **#define**은 특정 값에 이름을 붙일 수 있는 매크로 정의 구문이다.
+	- 사용 방법
 	
+		```c
+		#define 매크로이름 값
+		```
+	 
+- 앞의 변수 사용 예제를 아래와 같이 **#define** 문을 이용하여 변경할 수 있다.
+
+	```c
+	/* 	#define 매크로를 사용하여 디지털 핀 출력과 지연 시간을 설정	*/ 	#define k 10	#define dTime 500	void setup() {  		pinMode(k,OUTPUT);    	}	void loop() {  		digitalWrite(k,HIGH);  		delay(dTime);  		digitalWrite(k,LOW);  		delay(dTime);	}
+	```
+- **변수사용과의 차이점**
+	- 매크로를 사용하면 프로그램 컴파일 전에 전처리기를 거쳐 내부적으로 소스코드가 일괄 변환됩니다. 
+	- 변수를 사용하게되면 프로그램 실행 시에 변수를 위한 저장공간을 따로 마련하게 되고, 변수의 값을 프로그램 실행 중에 다른 값으로 변경할 수 있습니다. 
+
+
 ---
 ### 2. 함수 만들기
 - 프로그램에서 반복적으로 사용되는 부분을 함수로 만들어 사용
@@ -114,8 +132,14 @@ div.polaroid {
 
 #### 2.3 함수
 - 모듈화된 코드 블록
-	- 형식: *반환타입* *함수이름*(*파라미터*,...)
-	- 예: **int myMultiplyFunction(int x, int y)**
+	- 형식 
+	
+		```
+		반환타입 함수이름(파라미터,...)
+		```
+	- 예
+		- **void setup()**
+		- **int myMultiplyFunction(int x, int y)**
 	
 	 <div class="polaroid">
 	  	<img src="https://www.arduino.cc/en/uploads/Reference/FuncAnatomy.png"> 
