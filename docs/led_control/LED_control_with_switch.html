@@ -392,9 +392,8 @@ void loop() {
 <p><img src="images/if_else_ex1.png" width =600>
 <img src="images/if_else_ex2.png" width =600></p>
 
-<ul>
-<li>완성된 Sketch 프로그램</li>
-</ul>
+<p><a name=2.2></a>
+- 완성된 Sketch 프로그램</p>
 
 <div><pre><code class="language-c">/*
   4개의 스위치와 4개의 LED를 이용한 입출력 제어
@@ -467,8 +466,17 @@ void loop() {
 <h3 id="toc_12">4. 연습과제</h3>
 
 <ol>
-<li><p>스위치의 우선순위를 정하여 두 개 이상의 스위치가 동시에 눌려졌을 때 우선순위가 높은 스위치의 제어가 이루어지도록 스케치를 만들어 보자.
-(예: 우선순위가 SW0&lt;SW1&lt;SW2&lt;SW3일 때, SW1과 SW3이 동시에 눌려지면 SW3에 의하여 지정된 동작을 하도록 한다.)</p></li>
+<li><p><a href="#2.2">2.2절의 예제코드</a>에서 스위치의 우선순위를 정하여 두 개 이상의 스위치가 동시에 눌려졌을 때 우선순위가 높은 스위치의 제어만 이루어지도록 스케치를 만들어 보자.</p>
+
+<ul>
+<li>동작 예: 우선순위가 SW0&lt;SW1&lt;SW2&lt;SW3일 때, 
+
+<ul>
+<li>SW1과 SW3이 동시에 눌려지면 SW3에 의하여 LED3만 켜지고, LED1은 꺼져야한다.</li>
+<li> SW1과 SW3이 동시에 눌려진 상태(LED3만 켜져 있음)에서, SW3의 손을 떼면 LED1만 켜져야 한다.</li>
+<li>SW1이 눌러진 상태(LED1이 켜져 있음)에서 SW3을 누르면, LED3만 켜지고 LED1은 꺼져야 한다.</li>
+</ul></li>
+</ul></li>
 <li><p>4개의 스위치를 사용하여 LED 4개가 모두 깜박이는 속도를 4단계로 조정하는 스케치를 만들어 보자.</p>
 
 <ul>
