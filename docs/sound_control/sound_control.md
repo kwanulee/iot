@@ -33,8 +33,28 @@ div.polaroid {
  	- A, A#, B, C, C#, D, D#, E, F, F#, G, G#로 표시
 
 	<img src="images/geo_series.png" width=300>
-	
+
+<!--
 	<img src="images/note_freq.png" width=450>
+-->
+
+  12음계 | 7음계 | 주파수 | 주파수 계산식
+  -------|------|-------|------------
+  C | 도 | 261.63 Hz | 440 X 2<sup>(-9/12)
+  C# |   | 277.18 Hz | 440 X 2<sup>(-8/12)  
+  D | 레 | 293.66 Hz | 440 X 2<sup>(-7/12)  
+  D# |    | 311.13 Hz | 440 X 2<sup>(-6/12)
+  E | 미 | 329.63 Hz | 440 X 2<sup>(-5/12)  
+  F | 파 | 349.23 Hz | 440 X 2<sup>(-4/12)
+  F# |    | 369.99 Hz | 440 X 2<sup>(-3/12)
+  G |  솔  | 392.00 Hz | 440 X 2<sup>(-2/12)
+  G# |    | 415.30 Hz | 440 X 2<sup>(-1/12)
+  A | 라 | 440.00 Hz | 440 X 2<sup>(0/12)
+  A# |  | 446.16 Hz | 440 X 2<sup>(1/12)
+  B | 시 | 493.88 Hz | 440 X 2<sup>(2/12)
+
+
+
 
 - "도레미파솔라시"는 12음계 중 7개만을 표현
 - "C(도), D(레), E(미), F(파), G(솔), 라(A), 시(B)"
@@ -165,7 +185,8 @@ void scalePlay(int freq) {
 - **[tone(pin,freq,dtime )](https://www.arduino.cc/reference/en/language/functions/advanced-io/tone/)** :  소리를 나게 하는  함수
     - 재생하고자 하는 음의 주파수(freq)와 그 음이 지속되어야 할 시간(dtime)을 msec 단위로 지정
     - 음이 지속될 시간을 지정하지 않으면, 다른 tone( )함수가 실행되거나 noTone( )함수가 실행 될 때까지 계속 출력
-![](images/tone.png)
+
+    ![](images/tone.png)
 - **[noTone(pin )](https://www.arduino.cc/reference/ko/language/functions/advanced-io/notone/)** : 소리가 나지 않도록 하는 함수
 
 
@@ -239,21 +260,21 @@ void scalePlay(int freq) {
 	unsigned int  freq[ ]= {262, 294, 330, 349, 392, 440, 494};
 	char mData[ ]="CCGGAAGpFFEEDDCpGGFFEEDpGGFFEEDpCCGGAAGpFFEEDDCp";
 	const  byte mSize=sizeof(mData);
- 
+
 	void  setup( ) {
 	   	pinMode(piezo, OUTPUT);
 	}
-	 
+
 	void loop( ) {
 	   	int  playT=500;   // 1박자를 0.5초
 	   	for (int  m=0; m<mSize; m++) {
  	      	for(int k=0; k<7; k++) {
 	         	if( mData[m]==code[k] ) {        // 배열 mData[]의 문자와 배열 code[] 의 문자 비교하여 인텍스 k 검색
 	             	tone(piezo, freq[k], playT);  // freq[k]의 값을 tone( )함수 전달
-	              delay(playT);                 // 1박자 연주 
+	              delay(playT);                 // 1박자 연주
 	         	}
 	        }
-	        if (mData[m]=='p') {                // 배열 mData[]의 문자가 'p' 인 경우 
+	        if (mData[m]=='p') {                // 배열 mData[]의 문자가 'p' 인 경우
 	          delay(playT);                     // 1박자 더 쉼
 	        }
 	    }
@@ -364,7 +385,7 @@ void scalePlay(int freq) {
       }
     }
     ```
-    
+
 <a name="exercise"></a>
 ## 5. 연습문제
 1. 음과 박자를 고려하여, 다음 동요를 연주하는 스케치를 작성하여 보자.
