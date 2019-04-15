@@ -283,6 +283,67 @@ void scalePlay(int freq) {
 	    exit(0);
 	}  
 ```
+#### 4.2.3 프로그램 코드 (다른 방식의 구현)
+- \#define 문을 이용하여 각 계이름 코드에 대한 주파수 상수 값을 정의
+
+	```c
+	#define C 262
+	#define D 294
+	#define E 330
+	#define F 349
+	#define G 392
+	#define A 440
+	#define B 494
+	```
+- 연주할 곡의 계이름 코드를 int 배열로 표시
+
+	```c
+	int mData[] = {C,C,G,G,A,A,G,F,F,E,E,D,D,C};
+	```
+
+- mData[] 배열의 원소의 개수 구하기
+	- 배열의 원소의 개수 = 전체 배열의 크기 / 배열의 한 원소의 크기
+	
+	```c
+	byte mSize = sizeof(mData)/sizeof(mData[0]);
+	```
+	
+- mData[] 배열의 계이름 연주 
+	- 모든 계이름을 한 박자로 연주
+
+		```c
+		void loop() {
+		  int playT = 500;
+		  for (int i=0; i < mSize; i++) {
+		    tone(7,mData[i],playT);
+		    delay(playT);
+		  }
+		  exit(0);
+		}
+		```
+
+	- 배열 인덱스 6, 13번째 계이름만 두박자로 연주하고 나머지는 한박자로 연주
+
+		```c
+		void loop() {
+		  int playT=500;
+		  for (int i=0; i < mSize; i++) {
+		    if (i==6 || i==13)
+		    	playT=1000;
+		    else
+		    	playT=500;
+		    tone(7,mData[i],playT);
+		    delay(playT);
+		  }
+		  exit(0);
+		}
+		```
+- 전체코드
+
+```c
+#define C 262#define D 294#define E 330#define F 349#define G 392#define A 440#define B 494const  int  piezo=7;int mData[] = {C,C,G,G,A,A,G,F,F,E,E,D,D,C};const byte mSize = sizeof(mData)/sizeof(mData[0]);void setup() {  pinMode(piezo, OUTPUT);  }void loop() {  int playT=500;  for (int i=0; i < mSize; i++) {    if (i==6 || i==13)        playT=1000;    else        playT=500;    tone(7,mData[i],playT);    delay(playT);  }  exit(0);}
+```
+
 
 ### 4.3 예제 5: 간이형 키보드 만들기
 
