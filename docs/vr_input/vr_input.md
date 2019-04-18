@@ -85,17 +85,27 @@ div.polaroid {
 	<div class="polaroid">
 	<img src="images/map_function.png">
 	</div>
-	
+
+<a name=2.2.3></a>	
 ### 2.2.3 Sketch 프로그램
 ```c
-/*  가변저항으로 LED의 밝기를 조절  - 가변저항을 통하여 입력되는 0~1023 범위의 값을 0~255범위의 값으로 변환*/void setup() {  pinMode(5, OUTPUT);  }void loop() {  int val1 = analogRead(2); // 아날로그입력 2번을 통하여 입력된 전압값을                            // 0~1023범위의 값으로 읽어 val1에 저장  int val2 = map(val1, 0, 1023, 0, 255); // 0~1023범위의 val값을 0~255 범위로 변환    analogWrite(5, val2);     // PWM 신호로 출력  delay(20); }
+/*  가변저항으로 LED의 밝기를 조절  - 가변저항을 통하여 입력되는 0~1023 범위의 값을 0~255범위의 값으로 변환*/int pwdOut = 5;void setup() {  pinMode(pwdOut, OUTPUT);  }void loop() {  int val1 = analogRead(2); // 아날로그입력 2번을 통하여 입력된 전압값을                            // 0~1023범위의 값으로 읽어 val1에 저장  int val2 = map(val1, 0, 1023, 0, 255); // 0~1023범위의 val값을 0~255 범위로 변환    analogWrite(pwdOut, val2);     // PWM 신호로 출력  delay(20); }
 ```
 <a name="exercise"></a>
 ## 3. 연습문제
 	
-1. LCD 화면에 아날로그 소자인 가변저항(VR)의 값을 입력 받아 출력하는 프로그램을 작성합니다.
+1. [예제 2 스케치 코드](#2.2.3)에서 LCD 화면에 두 변수 val1과 val2의 값을 출력하는 프로그램을 작성합니다.
+	- TextLCD 화면 실행 예
+	
+	![](figure/result2.jpg)
+
 
 2. 가변저항(VR)를 가변시키면, 다음 그림과 같이 값을 AD 변환하여 LED 0부터 3까지 4개의 LED를 값에 따라 켜지는 스케치를 작성해 보자.
+	- 가변저항 값이 0~204 이면 LED 모두 Off
+	- 가변저항 값이 205~408 이면, LED_0 On
+	- 가변저항 값이 409~612 이면, LED_0,LED_1 On
+	- 가변저항 값이 613~819 이면, LED_0,LED_1, LED_2 On
+	- 가변저항 값이 820~2013 이면, LED_0,LED_1, LED_2, LED_3 On
 	![](images/practice1.png)
 	- [힌트]
 		- if 문에서 두개 이상의 조건을 결합할 때는 &&(and), ||(or)를 사용할 수 있습니다.
