@@ -97,7 +97,7 @@ div.polaroid {
 1. [예제 2 스케치 코드](#2.2.3)에서 LCD 화면에 두 변수 val1과 val2의 값을 출력하는 프로그램을 작성합니다.
 	- TextLCD 화면 실행 예
 	
-	![](figure/result2.jpg)
+	![](images/result2.jpg)
 
 
 2. 가변저항(VR)를 가변시키면, 다음 그림과 같이 값을 AD 변환하여 LED 0부터 3까지 4개의 LED를 값에 따라 켜지는 스케치를 작성해 보자.
