@@ -97,15 +97,15 @@ div.polaroid {
 1. [예제 2 스케치 코드](#2.2.3)에서 LCD 화면에 두 변수 val1과 val2의 값을 출력하는 프로그램을 작성합니다.
 	- TextLCD 화면 실행 예
 	
-	![](images/result2.jpg)
+	<img src="images/result2.jpg" width=250>
 
 
 2. 가변저항(VR)를 가변시키면, 다음 그림과 같이 값을 AD 변환하여 LED 0부터 3까지 4개의 LED를 값에 따라 켜지는 스케치를 작성해 보자.
 	- 가변저항 값이 0~204 이면 LED 모두 Off
-	- 가변저항 값이 205~408 이면, LED_0 On
-	- 가변저항 값이 409~612 이면, LED_0,LED_1 On
-	- 가변저항 값이 613~819 이면, LED_0,LED_1, LED_2 On
-	- 가변저항 값이 820~2013 이면, LED_0,LED_1, LED_2, LED_3 On
+	- 가변저항 값이 205~408 이면, LED\_0 On
+	- 가변저항 값이 409~612 이면, LED\_0,LED\_1 On
+	- 가변저항 값이 613~819 이면, LED\_0,LED\_1, LED\_2 On
+	- 가변저항 값이 820~2013 이면, LED\_0,LED\_1, LED\_2, LED\_3 On
 	![](images/practice1.png)
 	- [힌트]
 		- if 문에서 두개 이상의 조건을 결합할 때는 &&(and), ||(or)를 사용할 수 있습니다.
