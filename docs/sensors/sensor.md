@@ -86,9 +86,14 @@ void setup() {  pinMode(5, OUTPUT);   // PWM 출력(디지털 핀 5)으로 LED 
 
 
 #### 3.3.2 아두이노 보드 연결 구성
+- 초음파센서 VCC핀 - 아두이노 +5V (브레드보드를 통해 연결)
+- 초음파센서 Trig핀 - 아두이노 디지털입출력 핀 8번
+- 초음파센서 Echo핀 - 아두이노 디지털입출력 핀 7번
+- 초음파센서 GND핀 - 아두이노 GND (브레드보드를 통해 연결)
+- 베이스보드 LED0핀 - 아두이노 디지털입출력 핀 5번
 
 <div class="polaroid">
-		<img src="images/arduino_connection2.png">
+		<img src="images/arduino_connection3.png">
 </div>
 
 
