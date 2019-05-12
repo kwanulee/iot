@@ -53,7 +53,7 @@ div.polaroid {
 	- [예제 1 (스마트폰을 이용한 LED ON/OFF 제어)](bluetooth_ex1.html)
 	- [예제 2 (스마트폰을 이용한 4개의 LED ON/OFF 제어)](bluetooth_ex2.html)
 
-
+<a name="exercise"></a>
 ## 3. 연습문제
 1. [예제 1 (스마트폰을 이용한 LED ON/OFF 제어)](bluetooth_ex1.html)를 [예제 2 (스마트폰을 이용한 4개의 LED ON/OFF 제어)](bluetooth_ex2.html)와 같이 [**serialEvent**](https://www.arduino.cc/en/Reference/SerialEvent)()함수를 이용하는 방식으로 수정하시오.
 2. [예제 2 (스마트폰을 이용한 4개의 LED ON/OFF 제어)](bluetooth_ex2.html)를 
