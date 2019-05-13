@@ -167,10 +167,10 @@ div.polaroid {
    노키아, IBM, 도시바, 인텔 등으로 구성된 Bluetooth SIG(Special Interest
    Group)를 통해 개발된 무선 기술 표준
 - 스마트폰, 노트북, PC주변장치, 이어폰 등 휴대용 기기에 이용
-- Bluetooth 무선 시스템은 ISM 대역인 2,400~2,483.5㎒ 사용
+- **Bluetooth** 무선 시스템은 **ISM 대역인 2,400~2,483.5㎒ 사용**
 - 인접 주파수를 쓰는 다른 시스템들과의 간섭 방지를 위해 2,402~2,480㎒ 대역에서
    총 79개 채널 할당
-- 시스템 간 전파 간섭 방지를 위해 주파수 호핑(Frequency Hopping) 방식 사용
+- 시스템 간 전파 간섭 방지를 위해 **주파수 호핑(Frequency Hopping)** 방식 사용
    - 주파수 호핑이란 다수 채널을 특정 패턴에 따라 빠르게 이동시키며 패킷(데이터)을 조금씩 전송하는 기술
    - 할당된 79개 채널을 1초당 1,600번 호핑
    - 호핑 패턴이 Bluetooth 기기 간에 동기화되어야 통신 가능
@@ -192,14 +192,6 @@ div.polaroid {
     <img src="images/rfid_elements.png" >
   </div>
 
-- RFID 주파수별 특징
-
-
-  |주파수 | 135 kHz 이하 | 13.56 MHz | 433 MHz | 860~960 MHz | 2.45 GHz|
-  |-----| -----|-----| -----|-----| -----|
-  |주 응용분야 | 보안, 동물관리| 교통카드, 도서관리 | 컨테이너, 자동차 | 유통, 물류 | 여권, ID 카드 |
-  | 능동/수동 | 수동형 | 수동형 | 능동형 | 수동형 | 수동/능동형 |
-  | 표준규격 | ISO 18000-2 | ISO 18000-3 | ISO 18000-7 | ISO 18000-6 | ISO 18000-4 |
 
 
 - RFID 동작절차
@@ -214,6 +206,21 @@ div.polaroid {
   <div class="polaroid">
     <img src="images/rfid.png" >
   </div>
+
+
+- RFID 주파수별 활용분야
+
+
+  |주파수 | 135 kHz 이하 | 13.56 MHz | 433 MHz | 860~960 MHz | 2.45 GHz|
+  |-----| -----|-----| -----|-----| -----|
+  |주 응용분야 | 보안, 동물관리| 교통카드, 도서관리 | 컨테이너, 자동차 | 유통, 물류 | 여권, ID 카드 |
+
+
+- 활용 사례
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_WLbp91r8Ro? frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+	 
 
 ### 3.4 NFC(Near Field Communication)
 
@@ -257,16 +264,20 @@ https://www.youtube.com/watch?v=6WYX1Z1vXAE&feature=youtu.be&t=359
 
 https://www.youtube.com/watch?v=iquILj4CcaU
 -->
-  - 인터넷 전화 접속으로 홈 오토메이션을 편리하게 하기 위한 목적으로
-   개발된 기술
-  - 사물인터넷 디바이스 간 통신에 필요한 요구사항을 고려한 표준기술
-  - **소형·저전력·저비용·근거리통신**을 위한 [IEEE 802.15.4](https://ko.wikipedia.org/wiki/IEEE_802.15.4) 기반으로 구성
-  - 모토로라, 하니웰 등이 중심이 되어 1998년부터 기술 개발 시작, 2002년
-   ZigBee Allience 설립
-  - 세계 대부분 지역에서 ISM 밴드인 2.4㎓ 대역 사용
-  - 무선랜, Bluetooth 등 동일 주파수 대역을 사용하는 무선 기술과의 간섭
+
+  - **소형·저전력·저비용·근거리통신**을 위한 [IEEE 802.15.4](https://ko.wikipedia.org/wiki/IEEE_802.15.4) 기반으로 구성된 개인 근거리 무선통신 표준기술
+  	- 최저전력: 100mW 미만
+  	- 통신거리: 10m~100m
+  	- 전송속도: 2.4GHz에서 250Kbps
+  	- 통신 주파수 
+  		- 세계 대부분 지역에서 ISM 밴드인 2.4㎓ 대역 사용
+  		- 무선랜, Bluetooth 등 동일 주파수 대역을 사용하는 무선 기술과의 간섭
    회피 목적으로 일부 국가에서 868㎒(유럽), 915㎒(미국/호주) 대역 사용
 
+  - **ZigBee** 장치는 메시 네트워크 방식을 이용, 여러 중간 노드를 거쳐 목적지까지 데이터를 전송함으로써 저전력임에도 불구하고 넓은 범위의 통신이 가능하다.
+  
+ 
+<!--
 - ZigBee 계층 구조
 	- ZigBee 장치는 물리(PHY) 계층, 매체 접속(MAC) 계층, 네트워크(Network)계층, 응용(Application) 계층으로 구분되는 프로토콜로 구성
  	- 물리 계층 및 매체접속 제어 계층은 IEEE 제정 IEEE802.15.4 표준 채택
@@ -276,11 +287,11 @@ https://www.youtube.com/watch?v=iquILj4CcaU
    <div class="polaroid">
      <img src="images/zigbee_architecture.png" >
    </div>
-
+-->
 - ZigBee 주요장치
-	- 단말장치: 각종 센서에 연결되어 데이터 전송
- 	- 코디네이터 장치: 정보 수집 및 장치 제어
- 	- 라우터 장치: 여러 장치 간 데이터 전달
+ 	- 코디네이터 (Coordinator): 정보 수집 및 장치 제어
+ 	- 라우터 (Router): 여러 장치 간 데이터 전달
+ 	- 단말장치(End Device): 각종 센서에 연결되어 데이터 전송
 
 - ZigBee 네트워크 구조
 	- 클러스터 트리(Tree) 구조
@@ -288,18 +299,18 @@ https://www.youtube.com/watch?v=iquILj4CcaU
  	- 메시(Mesh) 구조의 다양한 토폴로지 지원
  	- 네트워크 접속 가능 장치 수: 최대 65,000개
 
+ 	<img src="https://t1.daumcdn.net/cfile/tistory/22050A46542B7FE013">
+
 ### 3.6 Z-Wave
 - 개요
   - ZenSys가 주축이 되어 2005년에 설립된 Z-Wave Alliance에서 개발한
      홈오토메이션 모니터링 및 컨트롤을 위한 저전력 통신 기술
   - 908.42㎒(미국) 및 주변 주파수 대역에서 동작
-  - ITU-T에서 sub 1㎓ 협대역 무선 디바이스를 위한 1,2계층 표준
-     (G.9959)으로 등록
   - 국내는 2013년 12월 919.7㎒, 921.7㎒, 923.1㎒가 Z- Wave 용도로 승인
 
 - 주요 특징
   - 혼잡한 2.4㎓ 주파수 기반 통신기술에 비해 간섭이 없음
-  - 9,600bps~100Kbps의 전송속도 제공
+  - 9.6Kbps~100Kbps의 전송속도 제공
   - Z-Wave 기기들은 동일 네트워크에 위치한 다른 밴더 제품과의 호환성
    이 뛰어나며, 투과성이 좋아 30m 정도의 거리에서는 벽이 있어도 통신
    가능
@@ -313,10 +324,10 @@ https://www.youtube.com/watch?v=iquILj4CcaU
 
 ---
 <a name="4"></a>
-## 4. 저전력 장거리 통신 (LPWA: Low Power WIde Area) 기술
+## 4. 저전력 장거리 통신 (LPWA: Low Power Wide Area) 기술
 - 개요
   - 가정용 IoT는 Bluetooth, WiFi 등 근거리무선통신을 활용해 서비스 제공 가능하나, IoT 서비스 범위 확대 시 근거리무선통신은 단거리 제공범위 한계 극복 필요
-  - LPWAN의 특징
+  - **LPWAN (Low Power Wide Area Network)**의 특징
 	  	- 사물인터넷은 특성 상 연결기기 수가 매우 많으므로 안정적으로 데이터를
 	   교환하면서 비용을 줄이는 통신망 구축이 매우 중요한 요소
 	  	- 낮은 소비전력: 별도의 교체 비용 및 업무가 없거나 최소화되어야 함 
@@ -327,7 +338,7 @@ https://www.youtube.com/watch?v=iquILj4CcaU
 - **Weightless**는 영국 캠브리지 주변의 *ARM*과 *Neul*,
      *CSR(Cambridge Silicon Radio)* 등이 주축이 되어 만든 **개방형 표준 기반의
      *LPWAN* 기술 개발 표준 협의체**
-- **LPWAN (Low Power Wide Area Network)**를 위한 **사물 간의 무선 통신 기술**로도 일컫음
+- **LPWAN**를 위한 **사물 간의 무선 통신 기술**로도 일컫음
 - 주요 특징
 	- 커버리지: 도시지역-10km, 교외지역-30km
 	- 넓은 범위와 침투성을 위해 비면허 주파수 대역대인 ISM 대역 사용
