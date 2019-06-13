@@ -56,10 +56,22 @@ div.polaroid {
 
 ## 2. 빅데이터와 사물인터넷
 - 수많은 기기에서 나오는 데이터의 양은 점차 증가하므로 그 데이터에서 의미 있는 정보를 얻고 중요한 데이터만 효율적으로 처리하고 저장해야 한다.
-- 머지않아 공장의 기계뿐만 아니라 자동차, 가전제품, 대형마트의 상품 등 거의 모든 사물에 센서가 부착될 것이며 그 센서에서 생성되는 데이터를 통해 비즈니스 가치를 발굴하려고 할 것이다.
+- 머지않아 공장의 기계뿐만 아니라 자동차, 가전제품, 대형마트의 상품 등 거의 모든 사물에 센서가 부착될 것이며 그 센서에서 생성되는 **데이터를 통해 비즈니스 가치를 발굴**하려고 할 것이다.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/c_MLr3DqbuA?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+<!--
+	- 데이터를 중심으로 새로운 가치가 창출
+	- 웹 시대의 비즈니스 모델 - 사용자의 검색 결과를 바탕으로 광고
+	- IoT 시대의 비즈니스 모델 - 사물들이 만들어내는 Data를 통해서 사용자의 니즈를 예측
+	- 사용자 가치를 극대화시킬 수 있는 사업전략 구축
+		- 고객 데이터 수집: Iot 시대에는 고객이 입력하는 데이터가 아닌 자동으로 수집되는 데이터
+	- IoT 시대를 리드하기 위한 핵심 질문
+		- 어떤 데이터를 수집해야 하는가?
+		- 어떤 방법으로 축적해야 하는가?
+		- 축적된 정보에서 어떤 Context를 얻을 수 있는가?
+		- Context를 통해 어떤 사용자 Value를 제공할 것인가? 
+-->
 
 
 ### 3.1 UPS 사례
@@ -88,11 +100,11 @@ div.polaroid {
   - 기계(컴퓨터)가 인간 수준의 인지, 이해, 추론, 학습 등의 사고 능력을 모방할 수 있도록 고안된 것
 - 인공지능이란 무엇인가? 
 
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/sYt8EQzi20Y?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/7YSWn4p96Xw?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 	
 <!--	
-	- https://www.youtube.com/watch?v=7YSWn4p96Xw 
+	- https://www.youtube.com/watch?v=sYt8EQzi20Y 
 	- https://www.youtube.com/watch?v=2ePf9rue1Ao -->
 
 - 인공지능과 머신러닝
