@@ -101,6 +101,9 @@ div.polaroid {
 - 인공지능이란 무엇인가? 
 
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/7YSWn4p96Xw?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	
+	- 인공지능은 우리가 매일 사용하는 기술 뒤에 숨어 있습니다.
+	- 인공지능은 인간의 삶 및 행동 방식을 좀더 유용하게 도와주는 조력자 역할을 한다.
 
 	
 <!--	
@@ -109,7 +112,7 @@ div.polaroid {
 
 - 인공지능과 머신러닝
 
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/0bcATLm-ylk?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/0bcATLm-ylk?rel=0&amp;start=60&end=590" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 	
 - [머신러닝, 딥러닝 초간단 설명](https://www.youtube.com/watch?v=aF03asAmQbY)
 		
