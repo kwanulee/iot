@@ -22,9 +22,9 @@ div.polaroid {
 
 - **사물인터넷 서비스**는 사물인터넷 기술을 활용하여 사용자에게 새로운 가치를 제공하는 기능
   - 사물들로부터 수집된 정보를 저장 및 모니터링
-      - [사례1: 스마트 팜 시스템](https://youtu.be/iGRBWvrBuro?start=1171)
+      - [사례1: IoT 디바이스 관리 플랫폼 NeoIDM 적용사례](https://www.youtube.com/watch?v=yjWHU59g8l8)
   - 규칙 엔진 혹은 사용자에 의한 사물들의 원격 제어
-      - [사례2: 스마트 홈 시스템](https://youtu.be/iGRBWvrBuro?start=527)
+      - [사례2: 스마트 홈 시스템](https://www.youtube.com/watch?v=qR3vACJnkFA)
   - 사물들로부터 수집된 정보를 분석 및 학습하여 지능화된 서비스 제공
   		- [사례3: 삼성SDS, AI기술로 지능화된 첼로 물류 플랫폼 공개](https://www.samsungsds.com/global/ko/about/news/cello-tech-fair-2018.html) 
     <!--  - [사례3: Amazon AI 및 IoT](https://youtu.be/V4GidNmlHVA?t=248) -->
