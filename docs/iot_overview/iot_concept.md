@@ -9,7 +9,7 @@
 ## 1. 사물인터넷 개념
 
 
-[![aa](https://img.youtube.com/vi/iGRBWvrBuro/0.jpg)](https://youtu.be/iGRBWvrBuro?start=15&end=400)
+[![aa](https://img.youtube.com/vi/T1-Zeedt1A4/0.jpg)](https://www.youtube.com/watch?v=T1-Zeedt1A4)
 
 ### 1.1 사물인터넷이란?
 - 사물인터넷의 단어적 의미는 사물들(things)이 서로 연결된 인터넷 환경을 말함.
@@ -88,13 +88,12 @@
 - **IoT 1.0 : 디바이스 연결 단계** (초기 단계)
 	- 사물을 인터넷에 연결하는 기술 중심
 	- 네트워크에 연결된 사물의 기능이나 정보가 제한적이고, 대시보드를 통해 실시간으로 데이터를 조회하는 수준의 단계
-	- [사례1: 검체 모니터링 시스템](https://youtu.be/iGRBWvrBuro?start=924)
-	- [사례2: 스마트 팜 시스템](https://youtu.be/iGRBWvrBuro?start=1171)
+	- [사례1: IoT 디바이스 관리 플랫폼 NeoIDM 적용사례](https://www.youtube.com/watch?v=yjWHU59g8l8)
 
 - **IoT 2.0 : 인프라 구축 단계** (중간 단계) 
 	- 사물이 주변 환경을 센싱하는 능력으로 다른 사물과 연결이 가능해지는 시기
 		- 센서가 직접 센싱한 데이터나 이벤트를 구동기에 보내고 구동기는 전달된 신호에 따라 기계를 작동시키거나 간단한 동작이 가능
-    	- [사례3: 스마트 홈 시스템](https://youtu.be/iGRBWvrBuro?start=527)
+    	- [사례2: 스마트 홈 시스템](https://www.youtube.com/watch?v=qR3vACJnkFA)
 	- 센서와 통신모듈 가격 하락, 통신기술 발전 등으로 인터넷에 연결된 기기 수가 급격히 증가, 대량의 데이터 수집, 분석을 위한 **빅 데이터 플랫폼**, **예측분석 IoT 미들웨어** 등 다양한 인프라 기술이 개발되는 단계
 
 - **IoT 3.0 : 산업별 혁신 솔루션 개발 단계** (마지막 단계) 
@@ -103,7 +102,7 @@
 	- 현실 세계의 물리적 원인과 그에 따른 물리적 결과의 복잡한 현상을 사물을 통해 관측되는 데이터를 기반으로 추상화하고 사업 문제 해결을 위해 프로그램화한 사업 솔류션 개발
     - 사물은 더욱 지능화되어 주변 환경을 센싱, 다른 사물이나 센서, 서비스 등과 상호작용하면서 스스로 정보를 수집하고 공유
     - 기업은 자체 인프라 구축보다는 저비용, 구축 신속성, 고가용성, 고확장성 등의 이유로 클라우드 기반 서비스를 점차 선호
-    - 사례4: 스마트 시티
+    - 사례3: 스마트 시티
 
     	<iframe width="560" height="315" src="https://www.youtube.com/embed/A5fVAxFjIbs?rel=0&amp;start=783&end=1228" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
